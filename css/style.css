@@ -1,11 +1,42 @@
-table{
-    border: 1px solid black;
-    table-layout: fixed;
-    width: 100%;
+
+.raceBoard {
+  height: 80%;
+  width:80%;
+  top:20%;
+  background-color: blue;
+  top:10%;
+  bottom: 10%;
+  left: 10%;
+  right: 0;
+  margin: auto;
+
+}
+.player1Track{
+  background-color: red;
+  position
+  border-style: solid;
+  border-left: thick double #ff0000;
 }
 
-th, td {
-    border: 1px solid black;
-    overflow: hidden;
-    width: 1%;
+.imageContainer {
+  width:100%
+}
+.tracks {
+  height:25%;
+  border: 5px solid green;
+}
+.tracks--three {
+  height: 33.3333%;
+}
+
+div {
+  position:relative;
+}
+
+img {
+  height:100%;
+}
+
+.red {
+  border: 1px solid red;
 }

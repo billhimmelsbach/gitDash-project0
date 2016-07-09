@@ -28,12 +28,8 @@ $('body').on('keyup', function(event) {
     if (width==="100%") {
       alert("you win!");
     }
-    // console.log($('.player1Track').css("marginLeft"));
-    // if (($('.player1Track').css({marginLeft})) == 100%) {
-      // console.log("WIN!");
     console.log("working!");
   }
-
 });
 
 $('body').on('keyup', function(event) {
@@ -44,12 +40,8 @@ $('body').on('keyup', function(event) {
     if (width==="100%") {
       alert("you win!");
     }
-    // console.log($('.player1Track').css("marginLeft"));
-    // if (($('.player1Track').css({marginLeft})) == 100%) {
-      // console.log("WIN!");
     console.log("working!");
   }
-
 });
 
 $('body').on('keyup', function(event) {
@@ -60,12 +52,8 @@ $('body').on('keyup', function(event) {
     if (width==="100%") {
       alert("you win!");
     }
-    // console.log($('.player1Track').css("marginLeft"));
-    // if (($('.player1Track').css({marginLeft})) == 100%) {
-      // console.log("WIN!");
     console.log("working!");
   }
-
 });
 
 $('body').on('keyup', function(event) {
@@ -76,11 +64,7 @@ $('body').on('keyup', function(event) {
     if (width==="100%") {
       alert("you win!");
     }
-    // console.log($('.player1Track').css("marginLeft"));
-    // if (($('.player1Track').css({marginLeft})) == 100%) {
-      // console.log("WIN!");
     console.log("working!");
   }
-
 });
 });
