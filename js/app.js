@@ -13,6 +13,12 @@ $('document').ready(function() {
 // PlayerCreate("player1","bill",10);
 // console.log(Players);
 
+function postWin(playerWin) {
+  console.log(playerWin + "WINS THE GAME!");
+  $('.playerWinText').css({visibility: visible});
+  $('.playerWinText').html(playerWin + " WINS THE GAME");
+}
+
 //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
 //this hack takes the pixel output and converts it into a percent
 function calculateWidthPercent(parentDiv) {
@@ -26,7 +32,7 @@ $('body').on('keyup', function(event) {
     console.log(calculateWidthPercent('.player1Track'));
     var width = calculateWidthPercent('.player1Track');
     if (width==="92%") {
-      alert("you win!");
+      postWin("Player 1");
     }
     console.log("working!");
   }
@@ -38,9 +44,8 @@ $('body').on('keyup', function(event) {
     console.log(calculateWidthPercent('.player2Track'));
     var width = calculateWidthPercent('.player2Track');
     if (width==="60%") {
-      alert("you win!");
+      postWin("Player 2");
     }
-    console.log("working!");
   }
 });
 
@@ -50,9 +55,8 @@ $('body').on('keyup', function(event) {
     console.log(calculateWidthPercent('.player3Track'));
     var width = calculateWidthPercent('.player3Track');
     if (width==="60%") {
-      alert("you win!");
+      postWin("Player 3");
     }
-    console.log("working!");
   }
 });
 
@@ -62,9 +66,8 @@ $('body').on('keyup', function(event) {
     console.log(calculateWidthPercent('.player4Track'));
     var width = calculateWidthPercent('.player4Track');
     if (width==="60%") {
-      alert("you win!");
+      postWin("Player 4");
     }
-    console.log("working!");
   }
 });
 });

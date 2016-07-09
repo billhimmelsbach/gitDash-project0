@@ -37,11 +37,18 @@
 .tracks--three {
   height: 33.3333%;
 }
+.playerWinText {
+  font-size: 10em;
+  opacity:1;
+  z-index: 1000;
+  color: blue;
+  text-align: center;
+}
 
 .overlay {
-  background-color: #000000;
-  opacity: 0.8;
-  display: auto;
+  background-color: black;
+  opacity: 1;
+  visibility: hidden;
   z-index: 100;
   left: 0;
   line-height: auto;
