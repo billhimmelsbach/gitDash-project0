@@ -9,10 +9,11 @@ $('document').ready(function() {
 //
 //   // td.cellIndex)
 // console.log(track[0]);
-function PlayerCreate(number,name,counter) {
+function PlayerCreate(number,name,counter,image) {
   this.number=number;
   this.number.name=name;
   this.number.counter=counter;
+  this.number.image=image
 }
 PlayerCreate(1,bill,200);
 $('body').on('keyup', function(event) {
