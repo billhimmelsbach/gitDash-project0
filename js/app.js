@@ -25,7 +25,7 @@ $('body').on('keyup', function(event) {
     $('.player1Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player1Track'));
     var width = calculateWidthPercent('.player1Track');
-    if (width==="100%") {
+    if (width==="90%") {
       alert("you win!");
     }
     console.log("working!");
@@ -37,7 +37,7 @@ $('body').on('keyup', function(event) {
     $('.player2Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player2Track'));
     var width = calculateWidthPercent('.player2Track');
-    if (width==="100%") {
+    if (width==="60%") {
       alert("you win!");
     }
     console.log("working!");
@@ -49,7 +49,7 @@ $('body').on('keyup', function(event) {
     $('.player3Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player3Track'));
     var width = calculateWidthPercent('.player3Track');
-    if (width==="100%") {
+    if (width==="60%") {
       alert("you win!");
     }
     console.log("working!");
@@ -61,7 +61,7 @@ $('body').on('keyup', function(event) {
     $('.player4Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player4Track'));
     var width = calculateWidthPercent('.player4Track');
-    if (width==="100%") {
+    if (width==="60%") {
       alert("you win!");
     }
     console.log("working!");
