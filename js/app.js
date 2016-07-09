@@ -25,7 +25,7 @@ $('body').on('keyup', function(event) {
     $('.player1Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player1Track'));
     var width = calculateWidthPercent('.player1Track');
-    if (width==="90%") {
+    if (width==="92%") {
       alert("you win!");
     }
     console.log("working!");
