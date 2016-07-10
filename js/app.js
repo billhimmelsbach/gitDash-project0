@@ -28,7 +28,10 @@ function calculateWidthPercent(parentDiv) {
 
 // var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');
 $('body').on('keyup', function(event) {
-  if(event.which==49) {
+  var width = calculateWidthPercent('.player1Track');
+  if (width>="90%") {
+  }
+  else if(event.which==49) {
     $('.player1Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player1Track'));
     var width2 = calculateWidthPercent('.player1Track');
@@ -40,7 +43,10 @@ $('body').on('keyup', function(event) {
 });
 
 $('body').on('keyup', function(event) {
-  if(event.which===48) {
+  var width = calculateWidthPercent('.player2Track');
+  if (width>="90%") {
+  }
+  else if(event.which===48) {
     $('.player2Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player2Track'));
     var width2 = calculateWidthPercent('.player2Track');
@@ -65,7 +71,10 @@ $('body').on('keyup', function(event) {
 });
 
 $('body').on('keyup', function(event) {
-  if(event.which==39) {
+  var width = calculateWidthPercent('.player4Track');
+  if (width>="90%") {
+  }
+  else if(event.which==39) {
     $('.player4Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player4Track'));
     var width2 = calculateWidthPercent('.player4Track');
