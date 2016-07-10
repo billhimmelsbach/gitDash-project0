@@ -60,11 +60,8 @@ $('.overlayWin').hide();
 // // console.log(Players);
 
 function postWin(playerWin) {
-  console.log(playerWin + "WINS THE GAME!");
-
-  $('.overlayWin').show();
-
   $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
+  $('.overlayWin').show();
 }
 
 //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
