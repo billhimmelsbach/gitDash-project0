@@ -64,6 +64,12 @@ body {
   max-height:100%;
 }
 
+.overlayBackground {
+    width: 100%;
+    height: 100%
+    z-index: -99;
+    position:fixed;
+  }
 .overlay {
   max-height:60%;
   z-index: 100;
@@ -73,7 +79,7 @@ body {
   position: absolute;
   top: 20%;
   width: 100%;
-  background: url("../img/window.png")
+  background: url("../img/window.png");
   background-size: cover;
 }
 
