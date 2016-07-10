@@ -86,28 +86,6 @@ h1 {
   max-height:100%;
 }
 
-.dash {
-  font-style:italic;
-}
-
-.startText{
-  text-align: center;
-  font-family: helvetica;
-  color: #4078c0;
-  top: 15%;
-  width: 99%;
-  height:40%;
-  position:fixed;
-  display: block;
-  display:table-cell;
-  max-height:50%;
-
-}
-
-.titleText {
-  font-size: 2.3em;
-}
-
 .overlayStart{
   height:97%;
   z-index: 1000;
@@ -123,10 +101,55 @@ h1 {
   display:block;
 }
 
+.dash {
+  font-style:italic;
+}
+
+.startText{
+  text-align: center;
+  font-family: helvetica;
+  color: #4078c0;
+  top: 15%;
+  width: 96.5%;
+  height:30%;
+  position:fixed;
+  display: block;
+  display:table-cell;
+  max-height:30%;
+  font-size: 3.5vw;
+
+}
+
+.titleText {
+  font-size: 5.5vw;
+}
+
+.titleTextUnder {
+  font-size:2.5vw;
+}
+
 .inputBoxContainer {
   height: 45%;
+  width:96.5%;
   position: absolute;
   bottom:0;
+}
+
+.smallInputContainer{
+  height:50%;
+}
+
+.topLeftInput{
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.topRightInput{
+  border-bottom: 1px solid black;
+}
+
+.bottomLeftInput{
+  border-right: 1px solid black;
 }
 
 .overlayWin {
