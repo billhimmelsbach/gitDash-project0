@@ -1,7 +1,7 @@
 
 
 $('document').ready(function() {
-$('.overlay').hide();
+$('.overlayWin').hide();
 
 
 // var players = {};
@@ -62,7 +62,7 @@ $('.overlay').hide();
 function postWin(playerWin) {
   console.log(playerWin + "WINS THE GAME!");
 
-  $('.overlay').show();
+  $('.overlayWin').show();
 
   $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
 }
@@ -76,7 +76,7 @@ function calculateWidthPercent(parentDiv) {
 $('.reset').on('click', function(event) {
   console.log("THIS SHIT BE WORKING");
   $('.playerTracks').css({marginLeft: '0%'});
-  $('.overlay').hide();
+  $('.overlayWin').hide();
 });
 
 // var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');

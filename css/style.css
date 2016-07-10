@@ -81,14 +81,7 @@ h1 {
   font-family: 'Inconsolata',;
 }
 
-.overlayBackground {
-    width: 100%;
-    height: 100%
-    z-index: -99;
-    position:fixed;
-    overflow:hidden;
-  }
-.overlay {
+.overlayWin {
   max-height:100%;
   z-index: 100;
   left: 0;
