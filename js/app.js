@@ -62,7 +62,7 @@ function postWin(playerWin) {
 
   $('.overlay').show();
 
-  $('.playerWinText').html(playerWin + " PUSHES TO GITHUB!!!11``7");
+  $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
 }
 
 //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
@@ -98,10 +98,10 @@ $('body').on('keyup', function(event) {
   if (width>="90%") {
   }
   else if(event.which===48) {
-    $('.player2Track').css({marginLeft: '+=1%'});
+    $('.player2Track').css({marginLeft: '+=50%'});
     console.log(calculateWidthPercent('.player2Track'));
     var width2 = calculateWidthPercent('.player2Track');
-    if (width2==="90%") {
+    if (width2>="90%") {
       postWin("PLAYER 2");
     }
   }
@@ -115,7 +115,7 @@ $('body').on('keyup', function(event) {
     $('.player3Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player3Track'));
     var width2 = calculateWidthPercent('.player3Track');
-    if (width2==="90%") {
+    if (width2>="90%") {
       postWin("PLAYER 3");
     }
   }
@@ -129,7 +129,7 @@ $('body').on('keyup', function(event) {
     $('.player4Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player4Track'));
     var width2 = calculateWidthPercent('.player4Track');
-    if (width2==="90%") {
+    if (width2>="90%") {
       postWin("PLAYER 4");
     }
   }
