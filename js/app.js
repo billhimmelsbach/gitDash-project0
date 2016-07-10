@@ -2,6 +2,7 @@
 
 $('document').ready(function() {
 $('.overlayWin').hide();
+// $('.overlayStart').hide();
 
 function getJson (playerUrl, playerName) {
   console.log(playerUrl);
@@ -36,16 +37,13 @@ $('.player1Submit').on('click', function(event) {
   setTimeout(player1ImageChange, 2000);
   console.log("bigtest");
   console.log(json);
+});
 
 function player1ImageChange() {
   console.log(player1Url);
   $('.player1Image').attr('src', " ");
   console.log("done");
   $('.player1Image').attr('src', player1Url);
-
-
-
-
 }
 
 
@@ -181,4 +179,4 @@ $('body').on('keyup', function(event) {
   }
 });
 });
-});
+// });
