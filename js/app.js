@@ -110,14 +110,19 @@ function postWin(playerWin) {
   var widthArray = [width1, width2, width3, width4];
   for (var i = 0; i < widthArray.length; i++) {
     if (widthArray[i] >= "90%") {
-      winnerArray.push(widthArray[0]);
+      winnerArray.push(widthArray[i]);
     }
-  };
+    else {
+      winnerArray.push(null);
+    }
+    if (winnerArray.length ===1) {
+      $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
+      $('.overlayWin').show();
+    }
+    else {
+    }
 
-
-  if (width1 (width>="90%"))
-  $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
-  $('.overlayWin').show();
+  }
 }
 
 //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
