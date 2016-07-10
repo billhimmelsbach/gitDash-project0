@@ -2,7 +2,7 @@
 
 $('document').ready(function() {
 $('.overlayWin').hide();
-// $('.overlayStart').hide();
+$('.overlayStart').hide();
 var players = {};
 addPlayer("player1");
 $('.player1Image').attr('src', players.player1.image);
@@ -102,6 +102,20 @@ function player1ImageChange() {
 
 function postWin(playerWin) {
   console.log(playerWin + "WINS THE GAME!");
+  var winnerArray = [];
+  var width1 = calculateWidthPercent('.player1Track');
+  var width2 = calculateWidthPercent('.player2Track');
+  var width3 = calculateWidthPercent('.player3Track');
+  var width4 = calculateWidthPercent('.player4Track');
+  var widthArray = [width1, width2, width3, width4];
+  for (var i = 0; i < widthArray.length; i++) {
+    if (widthArray[i] >= "90%") {
+      winnerArray.push(widthArray[0]);
+    }
+  };
+
+
+  if (width1 (width>="90%"))
   $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
   $('.overlayWin').show();
 }
@@ -124,7 +138,7 @@ $('body').on('keyup', function(event) {
   if (width>="90%") {
   }
   else if(event.which==49) {
-    $('.player1Track').css({marginLeft: '+=50%'});
+    $('.player1Track').css({marginLeft: '+=90%'});
     console.log(calculateWidthPercent('.player1Track'));
     var width2 = calculateWidthPercent('.player1Track');
     if (width2>="90%") {
@@ -139,7 +153,7 @@ $('body').on('keyup', function(event) {
   if (width>="90%") {
   }
   else if(event.which===48) {
-    $('.player2Track').css({marginLeft: '+=50%'});
+    $('.player2Track').css({marginLeft: '+=90%'});
     console.log(calculateWidthPercent('.player2Track'));
     var width2 = calculateWidthPercent('.player2Track');
     if (width2>="90%") {
