@@ -17,7 +17,8 @@ $('document').ready(function() {
 function postWin(playerWin) {
   console.log(playerWin + "WINS THE GAME!");
   $('.overlay').show();
-  $('.playerWinText').html(playerWin + " WINS THE GAME");
+
+  $('.playerWinText').html(playerWin + "PUSHES TO GITHUB");
 }
 
 //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
@@ -32,7 +33,7 @@ $('body').on('keyup', function(event) {
   if (width>="90%") {
   }
   else if(event.which==49) {
-    $('.player1Track').css({marginLeft: '+=1%'});
+    $('.player1Track').css({marginLeft: '+=50%'});
     console.log(calculateWidthPercent('.player1Track'));
     var width2 = calculateWidthPercent('.player1Track');
     if (width2>="90%") {
