@@ -3,6 +3,12 @@
 body {
   background: url("../img/background.png");
   background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Inconsolata', sans-serif;
+}
+
+h1 {
+  font-family: 'Inconsolata', ;
 }
 
 .windowBar {
@@ -55,13 +61,22 @@ body {
 .tracks--three {
   height: 33.3333%;
 }
+
+.reset {
+  font-size:4em;
+  margin:
+  left:0
+  right:0
+}
 .playerWinText {
   font-size: 10em;
   opacity:1;
+  max-width:98%;
   z-index: 1000;
-  color: blue;
+  color: BLACK;
   text-align: center;
   max-height:100%;
+  font-family: 'Inconsolata',;
 }
 
 .overlayBackground {
@@ -69,18 +84,22 @@ body {
     height: 100%
     z-index: -99;
     position:fixed;
+    overflow:hidden;
   }
 .overlay {
-  max-height:60%;
+  max-height:100%;
   z-index: 100;
   left: 0;
   line-height: auto;
   margin: auto;
   position: absolute;
-  top: 20%;
+  top: 10%;
   width: 100%;
-  background: url("../img/window.png");
+  background: url("../img/windowWin.png");
+  border-bottom: 1px solid black;
+  font-family: 'Inconsolata', ;
   background-size: cover;
+  display: block;
 }
 
 div {
