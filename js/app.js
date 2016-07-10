@@ -1,6 +1,8 @@
 
+
 $('document').ready(function() {
 $('.overlay').hide();
+
 
 // var players = {};
 // // console.log("Am I sane?");

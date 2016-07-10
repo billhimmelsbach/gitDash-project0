@@ -38,7 +38,7 @@ h1 {
 }
 
 .player1Container{
-  background-color:green;
+  background-color:blue;
 }
 
 .player2Container{
@@ -50,7 +50,7 @@ h1 {
 }
 
 .player4Container {
-  background-color: white;
+  background-color: green;
 }
 .imageContainer {
   width:100%
