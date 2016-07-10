@@ -10,7 +10,7 @@ function getJson (playerUrl, playerName) {
     dataType:"json",
     url: playerUrl,
     success: onSuccess,
-    failre: onFailure,
+    failure: onFailure,
   });
 }
 
@@ -39,6 +39,10 @@ $('.player1Submit').on('click', function(event) {
 
 function player1ImageChange() {
   console.log(player1Url);
+  $('img').attr('src', " ");
+  console.log("done");
+  $('img').attr('src', player1Url);
+
 
 
 
