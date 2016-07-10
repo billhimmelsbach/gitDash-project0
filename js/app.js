@@ -2,23 +2,51 @@
 
 $('document').ready(function() {
 $('.overlayWin').hide();
+
+function getJson (playerUrl, playerName) {
+  console.log(playerUrl);
+  $.ajax({
+    type:"GET",
+    dataType:"json",
+    url: playerUrl,
+    success: onSuccess,
+    failre: onFailure,
+  });
+}
+
+function onFailure(json) {
+  console.log('error!!!');
+}
+
+function onSuccess(json){
+  console.log(json);
+
+  console.log(json.avatar_url);
+  player1Url= json.avatar_url;
+
+}
+
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   console.log("test");
-  var playerName = $('.player1Submit').val();
-  var url= 'https://api.github.com/users/'+playerName;
-  function getJSON (url, playerName) {
-    $.ajax({
-      type:"GET",
-      url: url,
-      success: onSuccess(playerName),
-    });
-  }
- });
+  var playerName = $('.player1NameTextInput').val();
+  var playerUrl= 'https://api.github.com/users/'+playerName;
+  console.log(playerUrl, playerName);
+  var json = getJson(playerUrl);
+  setTimeout(player1ImageChange, 3000);
+  console.log("bigtest");
+  console.log(json);
+
+function player1ImageChange() {
+  console.log(player1Url);
 
 
 
-// var players = {};
+}
+
+
+
+var players = {};
 // // console.log("Am I sane?");
 //
 //
@@ -147,5 +175,6 @@ $('body').on('keyup', function(event) {
       postWin("PLAYER 4");
     }
   }
+});
 });
 });
