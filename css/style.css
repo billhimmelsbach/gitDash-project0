@@ -28,11 +28,13 @@ h1 {
   padding:4%;
 
 }
-.player1Track{
+.playerTracks{
   background-color: red;
   height:100%;
   border-style: solid;
   border: 1px solid black;
+  background: -moz-linear-gradient(#fdfdfd, #c9c9c9);
+	background: -webkit-linear-gradient(#fdfdfd, #c9c9c9);
 }
 
 .player1Container{
