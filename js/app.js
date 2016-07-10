@@ -5,14 +5,14 @@ $('.overlayWin').hide();
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   console.log("test");
-// $.ajax({
-//     type: "GET",
-//     url: 'https://github.com/billhimmelsbach.png?size=200',
-//     dataType:"image/jpg",
-//     success: function (data) {
-//         $('#CaptchaImg').attr('src', data);
-//       }
-//  });
+  $.ajax({
+      type: "GET",
+      url: 'https://github.com/billhimmelsbach.png?size=200',
+      dataType:"image/jpg",
+      success: function (img) {
+          $('#CaptchaImg').attr('src', img);
+        }
+ });
  });
 
 
