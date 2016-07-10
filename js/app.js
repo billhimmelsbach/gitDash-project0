@@ -3,16 +3,25 @@
 $('document').ready(function() {
 $('.overlayWin').hide();
 $('.overlayStart').hide();
-var players = {};
+var playerData = {};
 addPlayer("player1");
-$('.player1Image').attr('src', players.player1.image);
+$('.player1Image').attr('src', playerData.player1.image);
 addPlayer("player2");
-$('.player2Image').attr('src', players.player2.image);
-console.log(players);
-console.log(players.player1.image);
+$('.player2Image').attr('src', playerData.player2.image);
+addWinStates("winStates");
+console.log(playerData);
+console.log(playerData.player1.image);
 //I'M CREATING A BOX CALLED PLAYERNUMBER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
 function addPlayer(playerNumber) {
-  players[playerNumber]= new PlayerCreate();
+  playerData[playerNumber]= new PlayerCreate();
+}
+
+function addWinStates(winStates) {
+  playerData[winStates]= new WinStateCreate();
+}
+
+function WinStateCreate() {
+  this.winToggle = 0;
 }
 
 function PlayerCreate() {
@@ -110,18 +119,15 @@ function postWin(playerWin) {
   var widthArray = [width1, width2, width3, width4];
   for (var i = 0; i < widthArray.length; i++) {
     if (widthArray[i] >= "90%") {
-      winnerArray.push(widthArray[i]);
+      winnerArray.push("PLAYER " + (i+1));
     }
-    else {
-      winnerArray.push(null);
-    }
-    if (winnerArray.length ===1) {
-      $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
-      $('.overlayWin').show();
-    }
-    else {
-    }
-
+  }
+  if (winnerArray.length ===1) {
+    $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
+    $('.overlayWin').show();
+  }
+  else {
+    $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?! PLAY AGAIN!");
   }
 }
 
@@ -139,14 +145,17 @@ $('.reset').on('click', function(event) {
 
 // var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');
 $('body').on('keyup', function(event) {
-  var width = calculateWidthPercent('.player1Track');
-  if (width>="90%") {
+  var width1 = calculateWidthPercent('.player1Track');
+  var width2 = calculateWidthPercent('.player2Track');
+  var width3 = calculateWidthPercent('.player3Track');
+  var width4 = calculateWidthPercent('.player4Track');
+  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which==49) {
     $('.player1Track').css({marginLeft: '+=90%'});
     console.log(calculateWidthPercent('.player1Track'));
-    var width2 = calculateWidthPercent('.player1Track');
-    if (width2>="90%") {
+    var widthFinal = calculateWidthPercent('.player1Track');
+    if (widthFinal>="90%") {
       postWin("PLAYER 1");
     }
     console.log("working!");
@@ -154,42 +163,51 @@ $('body').on('keyup', function(event) {
 });
 
 $('body').on('keyup', function(event) {
-  var width = calculateWidthPercent('.player2Track');
-  if (width>="90%") {
+  var width1 = calculateWidthPercent('.player1Track');
+  var width2 = calculateWidthPercent('.player2Track');
+  var width3 = calculateWidthPercent('.player3Track');
+  var width4 = calculateWidthPercent('.player4Track');
+  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which===48) {
     $('.player2Track').css({marginLeft: '+=90%'});
     console.log(calculateWidthPercent('.player2Track'));
-    var width2 = calculateWidthPercent('.player2Track');
-    if (width2>="90%") {
+    var widthFinal = calculateWidthPercent('.player2Track');
+    if (widthFinal>="90%") {
       postWin("PLAYER 2");
     }
   }
 });
 
 $('body').on('keyup', function(event) {
-  var width = calculateWidthPercent('.player3Track');
-  if (width>="90%") {
+  var width1 = calculateWidthPercent('.player1Track');
+  var width2 = calculateWidthPercent('.player2Track');
+  var width3 = calculateWidthPercent('.player3Track');
+  var width4 = calculateWidthPercent('.player4Track');
+  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which==90) {
     $('.player3Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player3Track'));
-    var width2 = calculateWidthPercent('.player3Track');
-    if (width2>="90%") {
+    var widthFinal = calculateWidthPercent('.player3Track');
+    if (widthFinal>="90%") {
       postWin("PLAYER 3");
     }
   }
 });
 
 $('body').on('keyup', function(event) {
-  var width = calculateWidthPercent('.player4Track');
-  if (width>="90%") {
+  var width1 = calculateWidthPercent('.player1Track');
+  var width2 = calculateWidthPercent('.player2Track');
+  var width3 = calculateWidthPercent('.player3Track');
+  var width4 = calculateWidthPercent('.player4Track');
+  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which==39) {
     $('.player4Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player4Track'));
-    var width2 = calculateWidthPercent('.player4Track');
-    if (width2>="90%") {
+    var widthFinal = calculateWidthPercent('.player4Track');
+    if (widthFinal>="90%") {
       postWin("PLAYER 4");
     }
   }
