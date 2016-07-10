@@ -60,6 +60,7 @@ $('.overlayWin').hide();
 // // console.log(Players);
 
 function postWin(playerWin) {
+  console.log(playerWin + "WINS THE GAME!");
   $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
   $('.overlayWin').show();
 }
