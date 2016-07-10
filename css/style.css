@@ -7,6 +7,12 @@ body {
   font-family: 'Inconsolata', sans-serif;
 }
 
+/*div {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}*/
+
 h1 {
   font-family: 'Inconsolata', ;
 }
@@ -90,11 +96,15 @@ h1 {
   color: #4078c0;
   top: 15%;
   width: 99%;
-  height:20%;
+  height:40%;
   position:fixed;
   display: block;
-  font-size: 300pt;
+  display:table-cell;
 
+}
+
+.titleText {
+  font-size: 2.3em;
 }
 
 .overlayStart{
@@ -104,13 +114,19 @@ h1 {
   left: 1%;
   line-height: auto;
   margin: auto;
-  position: absolute;
   top: 3%;
   width: 98%;
   background: url("../img/overlayStart.png");
   border-bottom: 1px solid black;
   background-size: cover;
-  display: block;
+  position:absolute;
+  display:block;
+}
+
+.inputBoxContainer {
+  height: 45%;
+  /*position: absolute;*/
+  bottom:0;
 }
 
 .overlayWin {
@@ -142,4 +158,12 @@ img {
 
 .black {
   color:black;
+}
+
+.blue {
+  border: 1px solid blue;
+}
+
+.italic {
+  font-style:italic;
 }
