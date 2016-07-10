@@ -3,22 +3,6 @@
 $('document').ready(function() {
 $('.overlayWin').hide();
 // $('.overlayStart').hide();
-var players = {};
-addPlayer("player1");
-$('.player1Image').attr('src', players.player1.image);
-addPlayer("player2");
-$('.player2Image').attr('src', players.player2.image);
-console.log(players);
-console.log(players.player1.image);
-//I'M CREATING A BOX CALLED PLAYERNUMBER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
-function addPlayer(playerNumber) {
-  players[playerNumber]= new PlayerCreate();
-}
-
-function PlayerCreate() {
-    this.image = 'img/runner.png';
-    return this;
-}
 
 function getJson (playerUrl, playerName) {
   console.log(playerUrl);
@@ -63,6 +47,8 @@ function player1ImageChange() {
 }
 
 
+
+var players = {};
 // console.log("Am I sane?");
 
 
@@ -84,20 +70,37 @@ function player1ImageChange() {
 //   addPlayer(player2Number)
 // }
 
+function addPlayer(playerNumber, playerName, image) {
+  players[playerNumber]= new PlayerCreate(playerName, image);
+//I'M CREATING A BOX CALLED PLAYER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
+}
+
+function PlayerCreate(person, image) {
+    this.person=person;
+    this.image=image;
+    this.counter=0;
+    return this;
+}
+
+
+
+
+addPlayer("player1", "Bob", "some/image/path1");
+addPlayer("player2", "Sue", "some/image/path2");
   // Players.number=number;
   // this is Players (object).number (IT's TRANSLATING THIS AS A FUCKING STRING LITERALLY NUMBER NOT A VARIABLE A STRING LITERAL)
 
   // Players[number]=number;
 // THIS IS SAYING HAY TAKE MY OBJECT PLAYERS AND THEN SET A PROPERTY OF THIS OBJECT WHICH IS A VARIABLE EQUAL TO THIS STRING WHICH IS SET BY THE PARAMETER
-// var mystring="my butt"
-// // MY BUTT IS A STRING LITERAL, var myString Is a variable declaration which is being set to a string, NOT A STRING LITERAL, BECAUSE JAVASCRIPT DID SOMETHING TO WITH IT
-//
-// //WHAT I REALLY WANT IS FOR NUMBER TO BE AN OBJECT,
-// PlayerCreate("player1","bill",10);
-// => {'number': "player1"};
-// PlayerCreate("player2","bill",10);
-// => {'number': "player2"};
-// PlayerCreate("player3","bill",10);
+var mystring="my butt"
+// MY BUTT IS A STRING LITERAL, var myString Is a variable declaration which is being set to a string, NOT A STRING LITERAL, BECAUSE JAVASCRIPT DID SOMETHING TO WITH IT
+
+//WHAT I REALLY WANT IS FOR NUMBER TO BE AN OBJECT,
+PlayerCreate("player1","bill",10);
+=> {'number': "player1"};
+PlayerCreate("player2","bill",10);
+=> {'number': "player2"};
+PlayerCreate("player3","bill",10);
 // console.log(Players);
 
 function postWin(playerWin) {
