@@ -5,15 +5,17 @@ $('.overlayWin').hide();
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   console.log("test");
-  $.ajax({
-      type: "GET",
-      url: 'https://github.com/billhimmelsbach.png?size=200',
-      dataType:"image/jpg",
-      success: function (img) {
-          $('#CaptchaImg').attr('src', img);
-        }
+  var playerName = $('.player1Submit').val();
+  var url= 'https://api.github.com/users/'+playerName;
+  function getJSON (url, playerName) {
+    $.ajax({
+      type:"GET",
+      url: url,
+      success: onSuccess(playerName),
+    });
+  }
  });
- });
+
 
 
 // var players = {};
