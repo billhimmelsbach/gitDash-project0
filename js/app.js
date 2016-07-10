@@ -33,15 +33,15 @@ $('.player1Submit').on('click', function(event) {
   var playerUrl= 'https://api.github.com/users/'+playerName;
   console.log(playerUrl, playerName);
   var json = getJson(playerUrl);
-  setTimeout(player1ImageChange, 3000);
+  setTimeout(player1ImageChange, 2000);
   console.log("bigtest");
   console.log(json);
 
 function player1ImageChange() {
   console.log(player1Url);
-  $('img').attr('src', " ");
+  $('.player1Image').attr('src', " ");
   console.log("done");
-  $('img').attr('src', player1Url);
+  $('.player1Image').attr('src', player1Url);
 
 
 
