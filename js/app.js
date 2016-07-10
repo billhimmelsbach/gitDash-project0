@@ -143,6 +143,10 @@ $('.reset').on('click', function(event) {
   $('.overlayWin').hide();
 });
 
+function checkWin(playerNumber) {
+
+}
+
 // var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');
 $('body').on('keyup', function(event) {
   var width1 = calculateWidthPercent('.player1Track');
@@ -158,59 +162,84 @@ $('body').on('keyup', function(event) {
     if (widthFinal>="90%") {
       postWin("PLAYER 1");
     }
-    console.log("working!");
-  }
-});
-
-$('body').on('keyup', function(event) {
-  var width1 = calculateWidthPercent('.player1Track');
-  var width2 = calculateWidthPercent('.player2Track');
-  var width3 = calculateWidthPercent('.player3Track');
-  var width4 = calculateWidthPercent('.player4Track');
-  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which===48) {
     $('.player2Track').css({marginLeft: '+=90%'});
     console.log(calculateWidthPercent('.player2Track'));
-    var widthFinal = calculateWidthPercent('.player2Track');
-    if (widthFinal>="90%") {
+    var widthFinal2 = calculateWidthPercent('.player2Track');
+    if (widthFinal2>="90%") {
       postWin("PLAYER 2");
     }
-  }
-});
-
-$('body').on('keyup', function(event) {
-  var width1 = calculateWidthPercent('.player1Track');
-  var width2 = calculateWidthPercent('.player2Track');
-  var width3 = calculateWidthPercent('.player3Track');
-  var width4 = calculateWidthPercent('.player4Track');
-  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which==90) {
     $('.player3Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player3Track'));
-    var widthFinal = calculateWidthPercent('.player3Track');
-    if (widthFinal>="90%") {
+    var widthFinal3 = calculateWidthPercent('.player3Track');
+    if (widthFinal3>="90%") {
       postWin("PLAYER 3");
     }
-  }
-});
-
-$('body').on('keyup', function(event) {
-  var width1 = calculateWidthPercent('.player1Track');
-  var width2 = calculateWidthPercent('.player2Track');
-  var width3 = calculateWidthPercent('.player3Track');
-  var width4 = calculateWidthPercent('.player4Track');
-  if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
   }
   else if(event.which==39) {
     $('.player4Track').css({marginLeft: '+=1%'});
     console.log(calculateWidthPercent('.player4Track'));
-    var widthFinal = calculateWidthPercent('.player4Track');
-    if (widthFinal>="90%") {
+    var widthFinal4 = calculateWidthPercent('.player4Track');
+    if (widthFinal4>="90%") {
       postWin("PLAYER 4");
     }
   }
+
 });
-});
+
+// $('body').on('keyup', function(event) {
+//   var width1 = calculateWidthPercent('.player1Track');
+//   var width2 = calculateWidthPercent('.player2Track');
+//   var width3 = calculateWidthPercent('.player3Track');
+//   var width4 = calculateWidthPercent('.player4Track');
+//   if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
+//   }
+//   else if(event.which===48) {
+//     $('.player2Track').css({marginLeft: '+=90%'});
+//     console.log(calculateWidthPercent('.player2Track'));
+//     var widthFinal = calculateWidthPercent('.player2Track');
+//     if (widthFinal>="90%") {
+//       postWin("PLAYER 2");
+//     }
+//   }
 // });
+//
+// $('body').on('keyup', function(event) {
+//   var width1 = calculateWidthPercent('.player1Track');
+//   var width2 = calculateWidthPercent('.player2Track');
+//   var width3 = calculateWidthPercent('.player3Track');
+//   var width4 = calculateWidthPercent('.player4Track');
+//   if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
+//   }
+//   else if(event.which==90) {
+//     $('.player3Track').css({marginLeft: '+=1%'});
+//     console.log(calculateWidthPercent('.player3Track'));
+//     var widthFinal = calculateWidthPercent('.player3Track');
+//     if (widthFinal>="90%") {
+//       postWin("PLAYER 3");
+//     }
+//   }
+// });
+//
+// $('body').on('keyup', function(event) {
+//   var width1 = calculateWidthPercent('.player1Track');
+//   var width2 = calculateWidthPercent('.player2Track');
+//   var width3 = calculateWidthPercent('.player3Track');
+//   var width4 = calculateWidthPercent('.player4Track');
+//   if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
+//   }
+//   if
+//   else if(event.which==39) {
+//     $('.player4Track').css({marginLeft: '+=1%'});
+//     console.log(calculateWidthPercent('.player4Track'));
+//     var widthFinal = calculateWidthPercent('.player4Track');
+//     if (widthFinal>="90%") {
+//       postWin("PLAYER 4");
+//     }
+//   }
+// });
+// });
+});
