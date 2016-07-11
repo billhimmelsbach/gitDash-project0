@@ -262,7 +262,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 1", "player1");
       }
     }
-    if(event.which===48) {
+    else if(event.which===48) {
       $('.player2Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player2Track'));
       var widthFinal2 = calculateWidthPercent('.player2Track');
@@ -270,7 +270,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 2", "player2");
       }
     }
-    if(event.which==90) {
+    else if(event.which==90) {
       $('.player3Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player3Track'));
       var widthFinal3 = calculateWidthPercent('.player3Track');
@@ -278,7 +278,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 3", "player3");
       }
     }
-    if(event.which==39) {
+    else if(event.which==39) {
       $('.player4Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player4Track'));
       var widthFinal4 = calculateWidthPercent('.player4Track');
