@@ -107,6 +107,8 @@ $('.player2Submit').on('click', function(event) {
 
 $('.player3Submit').on('click', function(event) {
   event.preventDefault(event);
+  addPlayer("player3");
+  $('.player3Image').attr('src', playerData.player3.image);
   var playerName = $('.player3NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
   var json = getJson(playerUrl, "player3");
@@ -115,6 +117,8 @@ $('.player3Submit').on('click', function(event) {
 
 $('.player4Submit').on('click', function(event) {
   event.preventDefault(event);
+  addPlayer("player4");
+  $('.player4Image').attr('src', playerData.player4.image);
   var playerName = $('.player4NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
   var json = getJson(playerUrl, "player4");
