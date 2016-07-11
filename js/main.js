@@ -4,27 +4,27 @@
 
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
-    var playerData = {};
-    addPlayer("player1", 'img/runnerBlue.png');
-    $('.player1Image').attr('src', playerData.player1.image);
-    addPlayer("player2", 'img/runnerPurple.png');
-    $('.player2Image').attr('src', playerData.player2.image);
-    addWinStates("winStates");
-    addPlayer("player3", 'img/runnerOrange.png');
-    $('.player3Image').attr('src', playerData.player3.image);
-    addPlayer("player4", 'img/runnerGreen.png');
-    $('.player4Image').attr('src', playerData.player4.image);
-    //overlayOpens
-    $('.overlayStart').show(1000);
-    //music begins to buffer
-    var music1 = new Audio("sound/music1.mp3");
+  var playerData = {};
+  addPlayer("player1", 'img/runnerBlue.png');
+  $('.player1Image').attr('src', playerData.player1.image);
+  addPlayer("player2", 'img/runnerPurple.png');
+  $('.player2Image').attr('src', playerData.player2.image);
+  addWinStates("winStates");
+  addPlayer("player3", 'img/runnerOrange.png');
+  $('.player3Image').attr('src', playerData.player3.image);
+  addPlayer("player4", 'img/runnerGreen.png');
+  $('.player4Image').attr('src', playerData.player4.image);
+  //overlayOpens
+  $('.overlayStart').show(1000);
+  //music begins to buffer
+  var music1 = new Audio("sound/music1.mp3");
 
-    //now that the basic environment has been set, function definitions
+  //now that the basic environment has been set, function definitions
 
-    //object Constructors and helper functions to create playerData object
-    function addPlayer(playerNumber, imageUrl) {
-        playerData[playerNumber] = new PlayerCreate(imageUrl);
-    }
+  //object Constructors and helper functions to create playerData object
+  function addPlayer(playerNumber, imageUrl) {
+      playerData[playerNumber] = new PlayerCreate(imageUrl);
+  }
 
     function addWinStates(winStates) {
         playerData[winStates] = new WinStateCreate();
@@ -39,6 +39,7 @@ $('document').ready(function() {
     function PlayerCreate(imageUrl) {
         this.image = imageUrl;
         this.wins = 0;
+        this.playerWinCounter=0;
         return this;
     }
 
