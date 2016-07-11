@@ -36,6 +36,6 @@
 ---
 
 ##### Screenshot (optional)
-![gitDASH!](/img/screenshot.png?raw=true "gitDASH!")
+![gitDASH!](img/screenshot.png?raw=true "gitDASH!")
 
 ##### Link to hosted project on GitHub pages or BitBalloon (optional)
