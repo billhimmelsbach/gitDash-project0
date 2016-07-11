@@ -14,7 +14,7 @@
     <title>twistDASH - Twister with a Twist!</title>
   </head>
   <body>
-    <div class="col xs-12 overlayStart">
+    <div class="col xs-12 overlayStart initiallyHidden">
       <div class="row startText blue">
         <div class="col xs-12 titleText">
           <h1 class="titleText"> SF-WDI-LABS <span class="black">/</span> git<span class="italic">DASH</span>
@@ -49,11 +49,20 @@
               </div>
             </div>
               </div>
-
+              <div class="row startButtons">
+              <div class="startButtonsContainer">
+                <div class="col-xs-6 startButtonsContainer">
+                  <button class = "left-block startGame startGameButtons">Start Game</button>
+                </div>
+                <div class="col-xs-6 resetStart startButtonsContainer">
+                  <button class = "right-block resetStart startGameButtons">Reset</button>
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>
-    <div class="overlay col-xs-12 overlayWin">
+    <div class="overlay col-xs-12 overlayWin initiallyHidden">
       <div class="row">
         <h1 class="playerWinText">TEST</h1>
         </div>
@@ -63,7 +72,7 @@
 
 
     </div>
-    <div class="col-xs-12 raceBoard">
+    <div class="col-xs-12 raceBoard initiallyHidden">
       <div class="row">
         <div class="row windowBar">WINDOW BAR
 

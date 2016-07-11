@@ -41,6 +41,7 @@ h1 {
 }
 .playerTracks{
   background-color: red;
+  display:flex;
   height:100%;
   border-style: solid;
   border: 1px solid black;
@@ -77,9 +78,28 @@ h1 {
 
 .reset {
   font-size:4em;
-  margin:
   left:0
   right:0
+}
+
+.startButtonsContainer{
+  margin:0;
+  padding: 0;
+  border: 0;
+  left:0;
+  right:0;
+  margin:auto;
+  max-width:100%;
+  max-height:100%;
+  display:flex;
+}
+
+.startGameButtons {
+  font-size:2em;
+  margin: 0 auto;
+}
+
+.resetStart {
 }
 .playerWinText {
   font-size: 7.5em;
@@ -114,13 +134,12 @@ h1 {
   text-align: center;
   font-family: helvetica;
   color: #4078c0;
-  top: 15%;
-  width: 96.5%;
-  height:30%;
-  position:fixed;
+  top: 10%;
+  width: 100%;
+  height:100%;
   display: block;
-  display:table-cell;
   max-height:30%;
+  position:absolute;
   font-size: 3.5vw;
 
 }
@@ -137,7 +156,7 @@ h1 {
   height: 45%;
   width:96.5%;
   position: absolute;
-  bottom:0;
+  bottom:10%;
 }
 
 .smallInputContainer{
@@ -178,6 +197,7 @@ div {
 
 img {
   height:100%;
+  display:flex;
 }
 
 .red {
@@ -194,4 +214,8 @@ img {
 
 .italic {
   font-style:italic;
+}
+
+.initiallyHidden {
+  display: none;
 }
