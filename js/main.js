@@ -105,6 +105,7 @@ $('.addPlayersButton').on('click', function(event) {
     $('.addPlayerBox3').show();
     $('.hiddenImageBox3').show();
     $('.player3Container').show();
+    $('.player3Wins').show();
     playerHiddenCounter++;
   }
   else if (playerHiddenCounter===1) {
@@ -112,6 +113,7 @@ $('.addPlayersButton').on('click', function(event) {
     $('.addPlayerBox4').show();
     $('.player4Container').show();
     $('.hiddenImageBox4').show();
+    $('.player4Wins').show();
   }
 });
 
@@ -189,12 +191,12 @@ function postWin(playerWin, playerName) {
   }
   if (winnerArray.length ===1) {
     var imageUrl = playerData[playerName].image;
+    playerData[playerName].wins=+1;
     $('.winnerImage').attr('src', imageUrl);
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
-    $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins <span class='player3Wins'> Player 3 = " + playerData.player3.wins + " wins</span> <span class='player4Wins'> Player 4 = " + playerData.player4.wins +" wins </span>");
+    $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins  Player 3 = " + playerData.player3.wins + " wins  Player 4 = " + playerData.player4.wins +" wins");
     $('.overlayWin').show();
     console.log("SPECIAL" + playerWin);
-    playerData[playerName].wins=+1;
     console.log(playerData[playerName].wins);
   }
   else {
