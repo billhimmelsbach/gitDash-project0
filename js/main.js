@@ -1,10 +1,11 @@
-
-// $('.overlayWin').hide();
+//these two commented-out functions are for testing the style of windows without having to trigger them within the game
+// $('.overlayWin').show();
 // $('.overlayStart').hide();
+
+//onDocument ready: objects are created with default values
 $('document').ready(function() {
 var playerData = {};
 addPlayer("player1", 'img/runnerBlue.png');
-console.log(playerData.player1.image);
 $('.player1Image').attr('src', playerData.player1.image);
 addPlayer("player2", 'img/runnerPurple.png');
 $('.player2Image').attr('src', playerData.player2.image);
@@ -13,12 +14,14 @@ addPlayer("player3", 'img/runnerOrange.png');
 $('.player3Image').attr('src', playerData.player3.image);
 addPlayer("player4", 'img/runnerGreen.png');
 $('.player4Image').attr('src', playerData.player4.image);
+//overlayOpens
 $('.overlayStart').show(1000);
+//music begins to buffer
 var music1 = new Audio("sound/music1.mp3");
-console.log(playerData.player1.wins);
-console.log(playerData);
-console.log(playerData.player1.image);
-//I'M CREATING A BOX CALLED PLAYERNUMBER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
+
+//now that the basic environment has been set, function definitions
+
+//object Constructors and helper functions to create playerData object
 function addPlayer(playerNumber, imageUrl) {
   playerData[playerNumber]= new PlayerCreate(imageUrl);
 }
@@ -32,17 +35,15 @@ function WinStateCreate() {
   this.gameStart = 0;
   this.playerHiddenCounter=0;
 }
-console.log("IMPORTANT" + playerData.winStates.playerHiddenCounter);
 
 function PlayerCreate(imageUrl) {
-    console.log(imageUrl);
     this.image = imageUrl;
     this.wins = 0;
     return this;
 }
 
+//AJAX request function, and related helper functions
 function getJson (playerUrl, playerName) {
-  console.log(playerUrl);
   $.ajax({
     type:"GET",
     dataType:"json",
@@ -50,16 +51,13 @@ function getJson (playerUrl, playerName) {
     success: onSuccess,
     failure: onFailure,
   });
+
   function onFailure(json) {
     $('.titleTextUnder').html("ERROR AJAX REQUEST SERVER DOWN! OOOOOPS!");
   }
 
   function onSuccess(json){
-    console.log(json);
-    console.log(json.avatar_url);
-    console.log(playerData);
     playerData[playerName].image= json.avatar_url;
-    console.log(playerData.player1.image);
     if (playerName === "player1") {
       player1ImageChange();
     }
@@ -75,36 +73,42 @@ function getJson (playerUrl, playerName) {
   }
 }
 
+//function that runs when start game button is pressed
 function startGame() {
+//music plays
   music1.play();
+//overlay is set to hidden, while board shows
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
   $('.justinRightSide').show(1000);
+
+  //a timeout function built into StartGame() to have a countdown on the justin object and also allow player interaction at the word "go"
   setTimeout(function() {
     $('.justinRightSide').attr('src', 'img/justin2.png');
-  }, 1000);
-  setTimeout(function() {
-    $('.justinRightSide').attr('src', 'img/justin1.png');
   }, 2000);
   setTimeout(function() {
-    $('.justinRightSide').attr('src', 'img/justinGo.png');
+    $('.justinRightSide').attr('src', 'img/justin1.png');
   }, 3000);
+  setTimeout(function() {
+    $('.justinRightSide').attr('src', 'img/justinGo.png');
+  }, 4000);
   setTimeout(function() {
     playerData.winStates.gameStart=1;
-  }, 3000);
+  }, 4000);
   setTimeout(function() {
     $('.justinRightSide').hide(1000);
-  }, 4000);
+  }, 5000);
 }
 
+//an event listener for on start game button
 $('.startGame').on('click', function(event) {
   startGame();
 });
 
+//listener for add player button that reveals hidden divs, including a counter that differentiates when it's time for player 3 versus 4 to appear
 $('.addPlayersButton').on('click', function(event) {
   event.preventDefault(event);
   if (playerData.winStates.playerHiddenCounter===0) {
-    console.log("test");
     $('.addPlayerBox3').show();
     $('.hiddenImageBox3').show();
     $('.player3Container').show();
@@ -112,7 +116,6 @@ $('.addPlayersButton').on('click', function(event) {
     playerData.winStates.playerHiddenCounter++;
   }
   else if (playerData.winStates.playerHiddenCounter===1) {
-    console.log("test2");
     $('.addPlayerBox4').show();
     $('.player4Container').show();
     $('.hiddenImageBox4').show();
@@ -120,6 +123,7 @@ $('.addPlayersButton').on('click', function(event) {
   }
 });
 
+//four event listerners waiting to hear from the submit buttons to send data to the AJAX function
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   var playerName = $('.player1NameTextInput').val();
@@ -154,31 +158,29 @@ $('.player4Submit').on('click', function(event) {
   setTimeout(player4ImageChange, 2000);
 });
 
+
+//four functions that respond to the AJAX onSuccess by changing the player image
 function player1ImageChange() {
   $('.player1Image').attr('src', " ");
-  console.log("done");
   $('.player1Image').attr('src', playerData.player1.image);
 }
 
 function player2ImageChange() {
   $('.player2Image').attr('src', " ");
-  console.log("done");
-  console.log(playerData.player2.image);
   $('.player2Image').attr('src', playerData.player2.image);
 }
 
 function player3ImageChange() {
   $('.player3Image').attr('src', " ");
-  console.log("done");
   $('.player3Image').attr('src', playerData.player3.image);
 }
 
 function player4ImageChange() {
   $('.player4Image').attr('src', " ");
-  console.log("done");
   $('.player4Image').attr('src', playerData.player4.image);
 }
 
+//the function that
 function postWin(playerWin, playerName) {
   console.log(playerWin + "WINS THE GAME!");
   var winnerArray = [];

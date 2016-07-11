@@ -1,4 +1,17 @@
 
+/*Test Classes*/
+/*.red {
+  border: 1px solid red;
+}*/
+
+/*
+.black {
+  color:black;
+}*/
+
+/*.blue {
+  border: 1px solid blue;
+}*/
 
 body {
   background: url("../img/background.png");
@@ -7,19 +20,9 @@ body {
   font-family: 'Inconsolata', sans-serif;
 }
 
-/*div {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}*/
-
 .playerImages {
   display:block;
   margin:auto;
-}
-
-h1 {
-  font-family: 'Inconsolata', ;
 }
 
 .windowBar {
@@ -269,18 +272,6 @@ img {
   height:100%;
   display:flex;
 }
-
-/*.red {
-  border: 1px solid red;
-}*/
-
-.black {
-  color:black;
-}
-
-/*.blue {
-  border: 1px solid blue;
-}*/
 
 .italic {
   font-style:italic;
