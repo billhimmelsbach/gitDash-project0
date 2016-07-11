@@ -54,22 +54,6 @@ function getJson (playerUrl, playerName) {
   }
 }
 
-
-var counter = 2;
-function justin2() {
-  $('.justinRightSide').attr('src', 'img/justin2.png');
-  counter--;
-  timer();
-  return;
-}
-
-function justin1() {
-  $('.justinRightSide').attr('src', 'img/justin1.png');
-  counter--;
-  timer();
-  return;
-}
-
 function startGame() {
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
@@ -89,29 +73,7 @@ function startGame() {
   setTimeout(function() {
     $('.justinRightSide').hide(1000);
   }, 4000);
-
-
 }
-  // if (counter==0)
-  // if (counter==0) {
-  // setTimeout
-  // }
-
-  // setTimeout(function() {
-  //   $('.justinRightSide').attr('src', 'justinGo.png')
-  // }, 2000);
-
-  //
-  // $('.justinImageRight').animate({width: '0px'}, 1000, function() {
-  //                   $(this).hide();
-  //                   $('justinImageRight').animate({width: 'auto'}, 1000, function() {
-  //                           $(this).show();
-  //                   }
-  //                 );
-  //               }
-  //           );
-
-
 
 $('.startGame').on('click', function(event) {
   startGame();
