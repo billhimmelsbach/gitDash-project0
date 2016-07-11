@@ -210,6 +210,22 @@ function calculateWidthPercent(parentDiv) {
   return (Math.floor((100-(( 100 * parseFloat($(parentDiv).css('width')) / parseFloat($('.raceBoard').css('width')) )))) + '%');
 }
 
+$('.bigReset').on('click', function(event) {
+  event.preventDefault(event);
+    $('.bigReset').hide();
+    playerData.player1.image = 'img/runnerBlue.png';
+    playerData.player2.image = 'img/runnerPurple.png';
+    playerData.player3.image = 'img/runnerOrange.png';
+    playerData.player4.image = 'img/runnerGreen.png';
+    playerData.player1.wins = 0;
+    playerData.player2.wins = 0;
+    playerData.player3.wins = 0;
+    playerData.player4.wins = 0;
+  });
+
+
+
+
 $('.reset').on('click', function(event) {
   console.log("THIS SHIT BE WORKING");
   $('.playerTracks').css({marginLeft: '0%'});
