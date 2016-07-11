@@ -123,7 +123,7 @@ $('.addPlayersButton').on('click', function(event) {
   }
 });
 
-//four event listerners waiting to hear from the submit buttons to send data to the AJAX function
+//four event listerners waiting to hear from the submit buttons to parse the data and send it to the AJAX function
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   var playerName = $('.player1NameTextInput').val();
@@ -189,7 +189,7 @@ function postWin(playerWin, playerName) {
   var width3 = calculateWidthPercent('.player3Track');
   var width4 = calculateWidthPercent('.player4Track');
   var widthArray = [width1, width2, width3, width4];
-//a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
+  //a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
   for (var i = 0; i < widthArray.length; i++) {
     if (widthArray[i] >= "87%") {
       winnerArray.push("PLAYER " + (i+1));
@@ -220,7 +220,6 @@ function calculateWidthPercent(parentDiv) {
   return (Math.floor((100-(( 100 * parseFloat($(parentDiv).css('width')) / parseFloat($('.raceBoard').css('width')) )))) + '%');
 }
 
-//an event listener for the reset button, resets all initial condtitions without page reload
 $('.bigResetButton').on('click', function(event) {
   event.preventDefault(event);
     $('.bigReset').hide();
@@ -236,7 +235,9 @@ $('.bigResetButton').on('click', function(event) {
     $('.inputBox').val(null);
   });
 
-//event lister for new game button, soft reset of some conditions
+
+
+
 $('.reset').on('click', function(event) {
   console.log("THIS SHIT BE WORKING");
   music1.pause();
@@ -248,7 +249,7 @@ $('.reset').on('click', function(event) {
   playerData.winStates.gameStart=0;
 });
 
-//the main event listener that responds to when one of the player keys are pressed, based on the width of the column: this function pushes the margin closer to the edge
+// var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');
 $('body').on('keyup', function(event) {
   if (playerData.winStates.gameStart !==0) {
     var width1 = calculateWidthPercent('.player1Track');
@@ -256,7 +257,6 @@ $('body').on('keyup', function(event) {
     var width3 = calculateWidthPercent('.player3Track');
     var width4 = calculateWidthPercent('.player4Track');
     console.log(width1 +"OH MY MY");
-    //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
     if (((width1==="30%")||(width2==="30%"))) {
       $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
     }
@@ -281,7 +281,6 @@ $('body').on('keyup', function(event) {
     if (((width1==="88%")||(width2==="88%")||(width3==="88%")||(width4==="88%"))) {
       return;
     }
-    //for if statements that moves players when their button is pressed and checks to see if they have finished, if so, run the postWin function
     if(event.which==49) {
       $('.player1Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player1Track'));
