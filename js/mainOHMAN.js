@@ -252,8 +252,19 @@ $('body').on('keyup', function(event) {
     var width2 = calculateWidthPercent('.player2Track');
     var width3 = calculateWidthPercent('.player3Track');
     var width4 = calculateWidthPercent('.player4Track');
+    if (((width1==="50%")||(width2==="50%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
+    }
+    if (((width1==="60%")||(width2==="60%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git add .");
+    }
+    if (((width1==="70%")||(width2==="70%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
+    }
+    if (((width1==="80%")||(width2<="80%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
+    }
     if (((width1==="88%")||(width2==="88%")||(width3==="88%")||(width4==="88%"))) {
-      return;
     }
     if(event.which==49) {
       $('.player1Track').css({marginLeft: '+=1%'});
@@ -288,7 +299,22 @@ $('body').on('keyup', function(event) {
       }
     }
   }
+}
+    //
 
-
+    // }
+    // if (((width<="40%")||(width<="40%"))) {
+    //   $('.windowBar').text("student:gitDash-Project0 student$ git push origin mister");
+    // }
+    // if (((width<="40%")||(width<="40%"))) 5
+    //   $('.windowBar').text("student:gitDash-Project0 student$ git push rigin master");
+    // }
+    // if (((width1<="80%")||(width2<="80%")||(width3<="80%")||(width4<="80%"))) {
+    //   $('.windowBar').text("student:gitDash-Project0 student$ get push origin master");
+    // }
+    // if (((width1<="85%")||(width2<="85%")||(width3<="85%")||(width4<="85%"))) {
+    //   $('.windowBar').text("student:gitDash-Project0 student$ git push origin mister");
+    // }
+  // });
 });
 });
