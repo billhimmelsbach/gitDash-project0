@@ -2,7 +2,6 @@
 // $('.overlayWin').hide();
 // $('.overlayStart').hide();
 $('document').ready(function() {
-$('.overlayStart').show(1000);
 var playerData = {};
 addPlayer("player1", 'img/runnerBlue.png');
 console.log(playerData.player1.image);
@@ -14,6 +13,8 @@ addPlayer("player3", 'img/runnerOrange.png');
 $('.player3Image').attr('src', playerData.player3.image);
 addPlayer("player4", 'img/runnerGreen.png');
 $('.player4Image').attr('src', playerData.player4.image);
+$('.overlayStart').show(1000);
+var music1 = new Audio("sound/music1.mp3");
 console.log(playerData.player1.wins);
 console.log(playerData);
 console.log(playerData.player1.image);
@@ -75,6 +76,7 @@ function getJson (playerUrl, playerName) {
 }
 
 function startGame() {
+  music1.play();
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
   $('.justinRightSide').show(1000);
@@ -186,13 +188,14 @@ function postWin(playerWin, playerName) {
   var width4 = calculateWidthPercent('.player4Track');
   var widthArray = [width1, width2, width3, width4];
   for (var i = 0; i < widthArray.length; i++) {
-    if (widthArray[i] >= "88%") {
+    if (widthArray[i] >= "87%") {
       winnerArray.push("PLAYER " + (i+1));
     }
   }
   if (winnerArray.length ===1) {
     var imageUrl = playerData[playerName].image;
     playerData[playerName].wins=+1;
+    $('.winnerImage').show();
     $('.winnerImage').attr('src', imageUrl);
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
     $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins  Player 3 = " + playerData.player3.wins + " wins  Player 4 = " + playerData.player4.wins +" wins");
@@ -201,7 +204,9 @@ function postWin(playerWin, playerName) {
     console.log(playerData[playerName].wins);
   }
   else {
-    $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?! PLAY AGAIN!");
+    $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?!<br>PLAY AGAIN!");
+    $('.winnerImage').hide();
+    $('.overlayWin').show();
   }
 }
 
@@ -231,6 +236,8 @@ $('.bigResetButton').on('click', function(event) {
 
 $('.reset').on('click', function(event) {
   console.log("THIS SHIT BE WORKING");
+  music1.pause();
+  music1.currentTime = 0;
   $('.playerTracks').css({marginLeft: '0%'});
   $('.overlayWin').hide();
   $('.raceBoard').hide();
