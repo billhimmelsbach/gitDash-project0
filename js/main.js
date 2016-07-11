@@ -191,6 +191,7 @@ function postWin(playerWin, playerName) {
     var imageUrl = playerData[playerName].image;
     $('.winnerImage').attr('src', imageUrl);
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
+    $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins <span class='player3Wins'> Player 3 = " + playerData.player3.wins + " wins</span> <span class='player4Wins'> Player 4 = " + playerData.player4.wins +" wins </span>");
     $('.overlayWin').show();
     console.log("SPECIAL" + playerWin);
     playerData[playerName].wins=+1;
