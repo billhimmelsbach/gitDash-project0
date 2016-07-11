@@ -48,8 +48,12 @@ function getJson (playerUrl, playerName) {
     console.log(json);
     console.log(json.avatar_url);
     console.log(test);
-    playerData[test]["image"]= json.avatar_url;
-    console.log(player1.image);
+    console.log(playerData);
+    playerData[test].image= json.avatar_url;
+    console.log(playerData.player1.image);
+    if (test === "player1") {
+      player1ImageChange();
+    }
 
   }
 }
@@ -85,17 +89,16 @@ $('.player1Submit').on('click', function(event) {
   var playerName = $('.player1NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
   console.log(playerUrl, playerName);
-  var json = getJson(playerUrl, "playerOne");
+  var json = getJson(playerUrl, "player1");
   setTimeout(player1ImageChange, 2000);
   console.log("bigtest");
   console.log(json);
 });
 
 function player1ImageChange() {
-  console.log(player1Url);
   $('.player1Image').attr('src', " ");
   console.log("done");
-  $('.player1Image').attr('src', player1Url);
+  $('.player1Image').attr('src', playerData.player1.image);
 }
 
 
