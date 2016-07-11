@@ -32,7 +32,9 @@ $('document').ready(function() {
 
   //object Constructors and helper functions to create playerData object
   function addPlayer(playerNumber, imageUrl) {
-      playerData[playerNumber] = new PlayerCreate(imageUrl);
+      console.log(playerNumber);
+      console.log(imageUrl);
+      playerData[playerNumber] = new PlayerCreate(playerNumber, imageUrl);
   }
 
     function addGlobalStates(winStates) {
