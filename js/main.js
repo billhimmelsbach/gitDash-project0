@@ -1,26 +1,26 @@
 //these two commented-out functions are for testing the style of windows without having to trigger them within the game
 // $('.overlayWin').show();
 // $('.overlayStart').hide();
+//if ($(document).keyup()
+function evalueateKeypress() {
+
+}
 
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
   var playerData = [];
-
-
-// CANT I CREATE PLAYER 1 NAME DYNAMICALLY
-
+  var globalStates =
+  addGlobalStates("globalStates");
   addPlayer(1, 'img/runnerBlue.png');
   $('.player1Image').attr('src', playerData[1].image);
   addPlayer(2, 'img/runnerPurple.png');
   $('.player2Image').attr('src', playerData[2].image);
-  addGlobalStates("globalStates");
   addPlayer(3, 'img/runnerOrange.png');
   $('.player3Image').attr('src', playerData[3].image);
   addPlayer(4, 'img/runnerGreen.png');
   $('.player4Image').attr('src', playerData[4].image);
   console.log(playerData[1].playerWinCounter);
   console.log(playerData);
-  console.log(playerData.winStates.counterWinCondition);
 
   $('.overlayStart').show(1000);
   //music begins to buffer
@@ -32,8 +32,6 @@ $('document').ready(function() {
 
   //object Constructors and helper functions to create playerData object
   function addPlayer(playerNumber, imageUrl) {
-      console.log(playerNumber);
-      console.log(imageUrl);
       playerData[playerNumber] = new PlayerCreate(playerNumber, imageUrl);
   }
 
@@ -286,7 +284,7 @@ $('document').ready(function() {
                 postWin("PLAYER 1", "1");
                 }
             }
-            if (event.which === 48) {
+            else if (event.which === 48) {
                 $('.player2Track').css({
                     marginLeft: '+=1%'
                 });
@@ -295,7 +293,7 @@ $('document').ready(function() {
                     postWin("PLAYER 2", "2");
                 }
             }
-            if (event.which == 90) {
+            else if (event.which == 90) {
                 $('.player3Track').css({
                     marginLeft: '+=1%'
                 });
@@ -304,7 +302,7 @@ $('document').ready(function() {
                     postWin("PLAYER 3", "player3");
                 }
             }
-            if (event.which == 39) {
+            else if (event.which == 39) {
                 $('.player4Track').css({
                     marginLeft: '+=1%'
                 });
