@@ -173,7 +173,7 @@ function player4ImageChange() {
   $('.player4Image').attr('src', playerData.player4.image);
 }
 
-function postWin(playerWin) {
+function postWin(playerWin, winImage) {
   console.log(playerWin + "WINS THE GAME!");
   var winnerArray = [];
   var width1 = calculateWidthPercent('.player1Track');
@@ -187,6 +187,7 @@ function postWin(playerWin) {
     }
   }
   if (winnerArray.length ===1) {
+    $('.winnerImage').attr('src', playerData.player1.image);
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
     $('.overlayWin').show();
   }
@@ -225,7 +226,7 @@ $('body').on('keyup', function(event) {
       var widthFinal = calculateWidthPercent('.player1Track');
       if (widthFinal>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 1");
+          postWin("PLAYER 1", playerData.player1.image);
         }, 200);
       }
     }
@@ -235,7 +236,7 @@ $('body').on('keyup', function(event) {
       var widthFinal2 = calculateWidthPercent('.player2Track');
       if (widthFinal2>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 2");
+          postWin("PLAYER 2", playerData.player2.image);
         }, 500);
       }
     }
@@ -245,7 +246,7 @@ $('body').on('keyup', function(event) {
       var widthFinal3 = calculateWidthPercent('.player3Track');
       if (widthFinal3>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 3");
+          postWin("PLAYER 3", playerData.player3.image);
         }, 500);
       }
     }
@@ -255,7 +256,7 @@ $('body').on('keyup', function(event) {
       var widthFinal4 = calculateWidthPercent('.player4Track');
       if (widthFinal4>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 4");
+          postWin("PLAYER 4", playerData.player4.image);
         }, 500);
       }
     }
