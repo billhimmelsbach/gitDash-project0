@@ -125,12 +125,21 @@ body {
 }
 
 .winnerImageContainer {
-  height:10%;
+  height:8%%;
   display:block;
-  top:2.5em;
+  top:3em;
   overflow:hidden;
   width:auto;
 }
+
+.winnerTextRow {
+  margin-top:3%;
+}
+
+.winnerRow {
+  margin-top:+3%;
+}
+
 .winnerImage {
   width:20%;
   left:0;
@@ -225,7 +234,7 @@ body {
   line-height: auto;
   margin: auto;
   position: absolute;
-  top: 8%;
+  top: 2%;
   width: 96%;
   background: url("../img/windowWin.png");
   border-bottom: 1px solid black;

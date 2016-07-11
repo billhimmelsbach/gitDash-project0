@@ -178,7 +178,6 @@ $('document').ready(function() {
 
     //the function that determines what to do after a win: winner or tie. Then generates the content for the win overlay
     function postWin(playerWin, playerName) {
-        console.log(playerWin + "WINS THE GAME!");
         var winnerArray = [];
         var width1 = calculateWidthPercent('.player1Track');
         var width2 = calculateWidthPercent('.player2Track');
@@ -198,10 +197,8 @@ $('document').ready(function() {
             $('.winnerImage').show();
             $('.winnerImage').attr('src', imageUrl);
             $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
-            $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins  Player 3 = " + playerData.player3.wins + " wins  Player 4 = " + playerData.player4.wins + " wins");
+            $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins<br>Player 3 = " + playerData.player3.wins + " wins  Player 4 = " + playerData.player4.wins + " wins");
             $('.overlayWin').show();
-            console.log("SPECIAL" + playerWin);
-            console.log(playerData[playerName].wins);
         } else {
             $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?!<br>PLAY AGAIN!");
             $('.winnerImage').hide();
@@ -233,7 +230,6 @@ $('document').ready(function() {
 
     //event lister for new game button, soft reset of some conditions
     $('.reset').on('click', function(event) {
-        console.log("THIS SHIT BE WORKING");
         music1.pause();
         music1.currentTime = 0;
         $('.playerTracks').css({
@@ -252,7 +248,6 @@ $('document').ready(function() {
             var width2 = calculateWidthPercent('.player2Track');
             var width3 = calculateWidthPercent('.player3Track');
             var width4 = calculateWidthPercent('.player4Track');
-            console.log(width1 + "OH MY MY");
             //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
             if (((width1 === "30%") || (width2 === "30%"))) {
                 $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
@@ -283,7 +278,6 @@ $('document').ready(function() {
                 $('.player1Track').css({
                     marginLeft: '+=1%'
                 });
-                console.log(calculateWidthPercent('.player1Track'));
                 var widthFinal = calculateWidthPercent('.player1Track');
                 if (widthFinal === "88%") {
                     postWin("PLAYER 1", "player1");
@@ -293,7 +287,6 @@ $('document').ready(function() {
                 $('.player2Track').css({
                     marginLeft: '+=1%'
                 });
-                console.log(calculateWidthPercent('.player2Track'));
                 var widthFinal2 = calculateWidthPercent('.player2Track');
                 if (widthFinal2 === "88%") {
                     postWin("PLAYER 2", "player2");
@@ -303,7 +296,6 @@ $('document').ready(function() {
                 $('.player3Track').css({
                     marginLeft: '+=1%'
                 });
-                console.log(calculateWidthPercent('.player3Track'));
                 var widthFinal3 = calculateWidthPercent('.player3Track');
                 if (widthFinal3 === "88%") {
                     postWin("PLAYER 3", "player3");
@@ -313,7 +305,6 @@ $('document').ready(function() {
                 $('.player4Track').css({
                     marginLeft: '+=1%'
                 });
-                console.log(calculateWidthPercent('.player4Track'));
                 var widthFinal4 = calculateWidthPercent('.player4Track');
                 if (widthFinal4 === "80%") {
                     postWin("PLAYER 4", "player4");
