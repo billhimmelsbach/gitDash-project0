@@ -184,14 +184,16 @@ $('body').on('keyup', function(event) {
     var width2 = calculateWidthPercent('.player2Track');
     var width3 = calculateWidthPercent('.player3Track');
     var width4 = calculateWidthPercent('.player4Track');
-    if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))!==false) {
+    if (((width1>="90%")||(width2>="90%")||(width3>="90%")||(width4>="90%"))) {
     }
     else if(event.which==49) {
       $('.player1Track').css({marginLeft: '+=90%'});
       console.log(calculateWidthPercent('.player1Track'));
       var widthFinal = calculateWidthPercent('.player1Track');
       if (widthFinal>="90%") {
-        postWin("PLAYER 1");
+        setTimeout(function() {
+          postWin("PLAYER 1");
+        }, 200);
       }
     }
     else if(event.which===48) {
@@ -199,7 +201,9 @@ $('body').on('keyup', function(event) {
       console.log(calculateWidthPercent('.player2Track'));
       var widthFinal2 = calculateWidthPercent('.player2Track');
       if (widthFinal2>="90%") {
-        postWin("PLAYER 2");
+        setTimeout(function() {
+          postWin("PLAYER 2");
+        }, 500);
       }
     }
     else if(event.which==90) {
@@ -207,7 +211,9 @@ $('body').on('keyup', function(event) {
       console.log(calculateWidthPercent('.player3Track'));
       var widthFinal3 = calculateWidthPercent('.player3Track');
       if (widthFinal3>="90%") {
-        postWin("PLAYER 3");
+        setTimeout(function() {
+          postWin("PLAYER 3");
+        }, 500);
       }
     }
     else if(event.which==39) {
@@ -215,7 +221,9 @@ $('body').on('keyup', function(event) {
       console.log(calculateWidthPercent('.player4Track'));
       var widthFinal4 = calculateWidthPercent('.player4Track');
       if (widthFinal4>="90%") {
-        postWin("PLAYER 4");
+        setTimeout(function() {
+          postWin("PLAYER 4");
+        }, 500);
       }
     }
   }
