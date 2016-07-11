@@ -186,6 +186,11 @@ h1 {
   bottom:10%;
 }
 
+.utf {
+  font-size:-5em;
+  /*font-family:'helvetica', sans-serif;*/
+}
+
 .branch {
   width:10%;
   height:10%;
