@@ -174,7 +174,7 @@ function player4ImageChange() {
   $('.player4Image').attr('src', playerData.player4.image);
 }
 
-function postWin(playerWin, winImage, playerName) {
+function postWin(playerWin, playerName) {
   console.log(playerWin + "WINS THE GAME!");
   var winnerArray = [];
   var width1 = calculateWidthPercent('.player1Track');
@@ -193,8 +193,8 @@ function postWin(playerWin, winImage, playerName) {
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
     $('.overlayWin').show();
     console.log("SPECIAL" + playerWin);
-    playerData[playerWin].wins=+1;
-    console.log(playerData[playerWin].wins);
+    playerData[playerName].wins=+1;
+    console.log(playerData[playerName].wins);
   }
   else {
     $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?! PLAY AGAIN!");
@@ -231,7 +231,7 @@ $('body').on('keyup', function(event) {
       var widthFinal = calculateWidthPercent('.player1Track');
       if (widthFinal>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 1", playerData.player1.image, "player1");
+          postWin("PLAYER 1", "player1");
         }, 200);
       }
     }
@@ -241,7 +241,7 @@ $('body').on('keyup', function(event) {
       var widthFinal2 = calculateWidthPercent('.player2Track');
       if (widthFinal2>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 2", playerData.player2.image, "player2");
+          postWin("PLAYER 2", "player2");
         }, 500);
       }
     }
@@ -251,7 +251,7 @@ $('body').on('keyup', function(event) {
       var widthFinal3 = calculateWidthPercent('.player3Track');
       if (widthFinal3>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 3", playerData.player3.image, "player3");
+          postWin("PLAYER 3", "player3");
         }, 500);
       }
     }
@@ -261,7 +261,7 @@ $('body').on('keyup', function(event) {
       var widthFinal4 = calculateWidthPercent('.player4Track');
       if (widthFinal4>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 4", playerData.player4.image, "player4");
+          postWin("PLAYER 4", "player4");
         }, 500);
       }
     }
