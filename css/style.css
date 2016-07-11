@@ -191,8 +191,22 @@ h1 {
   display: block;
 }
 
+.justinRightSide {
+  display: none;
+}
+
 .justinRight {
   position: fixed;
+  bottom: 0;
+  right: 0;
+  margin:0;
+  padding:0;
+  z-index: 100000;
+}
+
+.justinText {
+  position: relative;
+  font-size:3em;
   bottom: 0;
   right: 0;
   margin:0;
@@ -201,11 +215,11 @@ h1 {
 }
 .justinImageRight {
   position:fixed;
-  bottom:-10%;
-  width:25%;
+  bottom:-5%;
+  width:30%;
   height: auto;
   right: 0;
-  z-index: 100000
+  z-index: 100000;
 }
 
 div {
@@ -217,17 +231,17 @@ img {
   display:flex;
 }
 
-.red {
+/*.red {
   border: 1px solid red;
-}
+}*/
 
 .black {
   color:black;
 }
 
-.blue {
+/*.blue {
   border: 1px solid blue;
-}
+}*/
 
 .italic {
   font-style:italic;

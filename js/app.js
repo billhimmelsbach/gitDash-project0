@@ -36,7 +36,7 @@ function getJson (playerUrl, playerName) {
     type:"GET",
     dataType:"json",
     url: playerUrl,
-    success: onSuccess,
+    success: onSuccess(playerName),
     failure: onFailure,
   });
 }
@@ -55,10 +55,34 @@ function onSuccess(json){
 
 }
 
+function justin2() {
+  $('.justinRightSide').attr('src', 'justin2.png');
+  setTimeout(justin1, 1000);
+}
+
+function justin1() {
+  $('.justinRightSide').attr('src', 'justin1.png');
+}
+
 function startGame() {
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
-  
+  $('.justinRightSide').show(1000);
+  setTimeout(justin2, 2000);
+  // setTimeout(function() {
+  //   $('.justinRightSide').attr('src', 'justinGo.png')
+  // }, 2000);
+
+
+  // $('.justinImageRight').animate({width: '0px'}, 1000, function() {
+  //                   $(this).hide();
+  //                   $('justinImageRight').animate({width: 'auto'}, 1000, function() {
+  //                           $(this).show();
+  //                   }
+  //                 );
+  //               }
+  //           );
+
   playerData.winStates.gameStart=1;
 }
 
