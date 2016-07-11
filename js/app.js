@@ -58,6 +58,7 @@ function onSuccess(json){
 function startGame() {
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
+  
   playerData.winStates.gameStart=1;
 }
 
