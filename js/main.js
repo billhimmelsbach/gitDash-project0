@@ -4,21 +4,29 @@
 
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
-  var playerData = {};
-  addPlayer(1, 'img/runnerBlue.png', "Player 1");
+  var playerData = [];
+
+
+// CANT I CREATE PLAYER 1 NAME DYNAMICALLY
+
+  addPlayer(1, 'img/runnerBlue.png');
   $('.player1Image').attr('src', playerData[1].image);
-  addPlayer(2, 'img/runnerPurple.png', "Player 2");
+  addPlayer(2, 'img/runnerPurple.png');
   $('.player2Image').attr('src', playerData[2].image);
-  addWinStates("winStates");
-  addPlayer(3, 'img/runnerOrange.png', "Player 3");
+  addGlobalStates("globalStates");
+  addPlayer(3, 'img/runnerOrange.png');
   $('.player3Image').attr('src', playerData[3].image);
-  addPlayer(4, 'img/runnerGreen.png', "Player 4");
+  addPlayer(4, 'img/runnerGreen.png');
   $('.player4Image').attr('src', playerData[4].image);
   console.log(playerData[1].playerWinCounter);
+  console.log(playerData);
   console.log(playerData.winStates.counterWinCondition);
+
   $('.overlayStart').show(1000);
   //music begins to buffer
   var music1 = new Audio("sound/music1.mp3");
+  console.log(playerData[1].image);
+  console.log(playerData);
 
   //now that the basic environment has been set, function definitions
 
@@ -27,22 +35,22 @@ $('document').ready(function() {
       playerData[playerNumber] = new PlayerCreate(imageUrl);
   }
 
-    function addWinStates(winStates) {
-        playerData[winStates] = new WinStateCreate();
+    function addGlobalStates(winStates) {
+        playerData[winStates] = new GlobalStatesCreate();
     }
 
-    function WinStateCreate() {
+    function GlobalStatesCreate() {
         this.winToggle = 0;
         this.gameStart = 0;
         this.playerHiddenCounter = 0;
         this.counterWinCondition = 100;
-    }
-
-    function PlayerCreate(playerNumber, imageUrl, username) {
+        return this;
+      }
+    function PlayerCreate(playerNumber, imageUrl) {
         this.image = imageUrl;
         this.wins = 0;
         this.playerWinCounter=0;
-        this.username=username;
+        this.username="Player" + playerNumber;
         return this;
     }
 
@@ -62,7 +70,7 @@ $('document').ready(function() {
 
         function onSuccess(json) {
             playerData[playerNumber].image = json.avatar_url;
-            playerData[PlayerNumber].username=json.login;
+            playerData[playerNumber].username=json.login;
             if (playerName === "player1") {
                 player1ImageChange();
             } else if (playerName === "player2") {
