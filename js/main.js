@@ -15,11 +15,11 @@ addPlayer("player3", 'img/runnerOrange.png');
 $('.player3Image').attr('src', playerData.player3.image);
 addPlayer("player4", 'img/runnerGreen.png');
 $('.player4Image').attr('src', playerData.player4.image);
+console.log(playerData.player1.wins);
 console.log(playerData);
 console.log(playerData.player1.image);
 //I'M CREATING A BOX CALLED PLAYERNUMBER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
 function addPlayer(playerNumber, imageUrl) {
-  console.log(imageUrl);
   playerData[playerNumber]= new PlayerCreate(imageUrl);
 }
 
@@ -35,6 +35,7 @@ function WinStateCreate() {
 function PlayerCreate(imageUrl) {
     console.log(imageUrl);
     this.image = imageUrl;
+    this.wins = 0;
     return this;
 }
 
@@ -173,7 +174,7 @@ function player4ImageChange() {
   $('.player4Image').attr('src', playerData.player4.image);
 }
 
-function postWin(playerWin, winImage) {
+function postWin(playerWin, winImage, playerName) {
   console.log(playerWin + "WINS THE GAME!");
   var winnerArray = [];
   var width1 = calculateWidthPercent('.player1Track');
@@ -187,9 +188,13 @@ function postWin(playerWin, winImage) {
     }
   }
   if (winnerArray.length ===1) {
-    $('.winnerImage').attr('src', playerData.player1.image);
+    var imageUrl = playerData[playerName].image;
+    $('.winnerImage').attr('src', imageUrl);
     $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
     $('.overlayWin').show();
+    console.log("SPECIAL" + playerWin);
+    playerData[playerWin].wins=+1;
+    console.log(playerData[playerWin].wins);
   }
   else {
     $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?! PLAY AGAIN!");
@@ -226,7 +231,7 @@ $('body').on('keyup', function(event) {
       var widthFinal = calculateWidthPercent('.player1Track');
       if (widthFinal>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 1", playerData.player1.image);
+          postWin("PLAYER 1", playerData.player1.image, "player1");
         }, 200);
       }
     }
@@ -236,7 +241,7 @@ $('body').on('keyup', function(event) {
       var widthFinal2 = calculateWidthPercent('.player2Track');
       if (widthFinal2>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 2", playerData.player2.image);
+          postWin("PLAYER 2", playerData.player2.image, "player2");
         }, 500);
       }
     }
@@ -246,7 +251,7 @@ $('body').on('keyup', function(event) {
       var widthFinal3 = calculateWidthPercent('.player3Track');
       if (widthFinal3>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 3", playerData.player3.image);
+          postWin("PLAYER 3", playerData.player3.image, "player3");
         }, 500);
       }
     }
@@ -256,7 +261,7 @@ $('body').on('keyup', function(event) {
       var widthFinal4 = calculateWidthPercent('.player4Track');
       if (widthFinal4>="90%") {
         setTimeout(function() {
-          postWin("PLAYER 4", playerData.player4.image);
+          postWin("PLAYER 4", playerData.player4.image, "player4");
         }, 500);
       }
     }
