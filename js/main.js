@@ -2,6 +2,8 @@
 // $('.overlayWin').show();
 // $('.overlayStart').hide();
 
+// TODO: You are free to use a counter.
+
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
     var playerData = {};
@@ -120,6 +122,8 @@ $('document').ready(function() {
     });
 
     //four event listerners waiting to hear from the submit buttons to send data to the AJAX function
+    //TODO: while timeout is waiting for img load, consider adding a spinning graphic to let people know things are happening in the background.
+    //TODO: Wrap the below code block into a function. Use string concatenation to add the number into the appropriate variables
     $('.player1Submit').on('click', function(event) {
         event.preventDefault(event);
         var playerName = $('.player1NameTextInput').val();
@@ -156,6 +160,7 @@ $('document').ready(function() {
 
 
     //four functions that respond to the AJAX onSuccess by changing the player image
+    //TODO: wrap into a single function with string concatenation
     function player1ImageChange() {
         $('.player1Image').attr('src', " ");
         $('.player1Image').attr('src', playerData.player1.image);
@@ -186,6 +191,7 @@ $('document').ready(function() {
         var widthArray = [width1, width2, width3, width4];
         //a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
         for (var i = 0; i < widthArray.length; i++) {
+            //TODO: comparing strings will compare ascii variables. consider using decimals '.87', etc. to track without having to change strings to ints, floats, etc.
             if (widthArray[i] >= "87%") {
                 winnerArray.push("PLAYER " + (i + 1));
             }
