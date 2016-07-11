@@ -15,7 +15,7 @@
 ## Existing Features
 
 * AJAX enabled player customization through GitHub avatars
-* HTML 5 audio allows music to 
+* HTML 5 audio allows music to
 * Persistent scoreboard through jQuery selectors and Object Orientated Design
 * Personalized win screen with GitHub avatar picture
 * AJAX/JSON/GitHub API
@@ -37,5 +37,3 @@
 
 ##### Screenshot (optional)
 ![gitDASH!](img/screenshot.png?raw=true "gitDASH!")
-
-##### Link to hosted project on GitHub pages or BitBalloon (optional)
