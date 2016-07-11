@@ -4,7 +4,6 @@
 
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
-  console.log(this.counterWinCondition);
   var playerData = {};
   addPlayer("player1", 'img/runnerBlue.png');
   $('.player1Image').attr('src', playerData.player1.image);
@@ -17,6 +16,8 @@ $('document').ready(function() {
   $('.player4Image').attr('src', playerData.player4.image);
   //overlayOpens
   $('.overlayStart').show(1000);
+  console.log(playerData.player4.playerWinCounter);
+  console.log(playerData.winStates.counterWinCondition);
   //music begins to buffer
   var music1 = new Audio("sound/music1.mp3");
 
@@ -38,10 +39,11 @@ $('document').ready(function() {
         this.counterWinCondition = 100;
     }
 
-    function PlayerCreate(imageUrl) {
+    function PlayerCreate(imageUrl, username) {
         this.image = imageUrl;
         this.wins = 0;
         this.playerWinCounter=0;
+        this.username=username;
         return this;
     }
 
@@ -61,6 +63,7 @@ $('document').ready(function() {
 
         function onSuccess(json) {
             playerData[playerName].image = json.avatar_url;
+            playerData
             if (playerName === "player1") {
                 player1ImageChange();
             } else if (playerName === "player2") {
@@ -181,16 +184,12 @@ $('document').ready(function() {
 
     //the function that determines what to do after a win: winner or tie. Then generates the content for the win overlay
     function postWin(playerWin, playerName) {
-        var winnerArray = [];
-        var width1 = calculateWidthPercent('.player1Track');
-        var width2 = calculateWidthPercent('.player2Track');
-        var width3 = calculateWidthPercent('.player3Track');
-        var width4 = calculateWidthPercent('.player4Track');
-        var widthArray = [width1, width2, width3, width4];
+        var playerCounterArray = [];
+        var playerCountArray = [playerData.player1.playerWinCounter, playerData.player2.playerWinCounter, playerData.player3.playerWinCounter, playerData.player4.playerWinCounter];
         //a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
         for (var i = 0; i < widthArray.length; i++) {
-            if (widthArray[i] >= "87%") {
-                winnerArray.push("PLAYER " + (i + 1));
+            if (playerCountArray[i]===playerData.winStates.counterWinCondition-1) {
+                winnerArray.push(i + 1);
             }
         }
         //if there is one winner
@@ -283,7 +282,7 @@ $('document').ready(function() {
                   marginLeft: '+=1%'
                 });
                 playerData.player1.playerWinCounter++;
-            if  (playerData.player1.playerWinCounter===playerData.counterWinCondition) {
+            if  (playerData.player1.playerWinCounter===playerData.winStates.counterWinCondition) {
                 postWin("PLAYER 1", "1");
                 }
             }
@@ -292,7 +291,7 @@ $('document').ready(function() {
                     marginLeft: '+=1%'
                 });
                 playerData.player2.playerWinCounter++;
-                if  (playerData.player2.playerWinCounter===playerData.counterWinCondition) {
+                if  (playerData.player2.playerWinCounter===playerData.winStates.counterWinCondition) {
                     postWin("PLAYER 2", "2");
                 }
             }
@@ -301,8 +300,7 @@ $('document').ready(function() {
                     marginLeft: '+=1%'
                 });
                 playerData.player3.playerWinCounter++;
-                var widthFinal3 = calculateWidthPercent('.player3Track');
-                if  (playerData.player3.playerWinCounter===playerData.counterWinCondition) {
+                if  (playerData.player3.playerWinCounter===playerData.winStates.counterWinCondition) {
                     postWin("PLAYER 3", "player3");
                 }
             }
@@ -311,8 +309,7 @@ $('document').ready(function() {
                     marginLeft: '+=1%'
                 });
                 playerData.player4.playerWinCounter++;
-                var widthFinal4 = calculateWidthPercent('.player4Track');
-                if  (playerData.player4.playerWinCounter===playerData.counterWinCondition) {
+                if  (playerData.player4.playerWinCounter===playerData.winStates.counterWinCondition) {
                     postWin("PLAYER 4", "player4");
                 }
             }
