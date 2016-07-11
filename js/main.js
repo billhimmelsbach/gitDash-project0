@@ -31,7 +31,6 @@ function PlayerCreate() {
 }
 
 function getJson (playerUrl, playerName) {
-  var test = playerName;
   console.log(playerUrl);
   $.ajax({
     type:"GET",
@@ -47,14 +46,21 @@ function getJson (playerUrl, playerName) {
   function onSuccess(json){
     console.log(json);
     console.log(json.avatar_url);
-    console.log(test);
     console.log(playerData);
-    playerData[test].image= json.avatar_url;
+    playerData[playerName].image= json.avatar_url;
     console.log(playerData.player1.image);
-    if (test === "player1") {
+    if (playerName === "player1") {
       player1ImageChange();
     }
-
+    else if (playerName === "player2") {
+      player2ImageChange();
+    }
+    else if (playerName === "player3") {
+      player3ImageChange();
+    }
+    else if (playerName === "player4") {
+      player4ImageChange();
+    }
   }
 }
 
@@ -85,14 +91,34 @@ $('.startGame').on('click', function(event) {
 
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
-  console.log("test");
   var playerName = $('.player1NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
-  console.log(playerUrl, playerName);
   var json = getJson(playerUrl, "player1");
   setTimeout(player1ImageChange, 2000);
-  console.log("bigtest");
-  console.log(json);
+});
+
+$('.player2Submit').on('click', function(event) {
+  event.preventDefault(event);
+  var playerName = $('.player2NameTextInput').val();
+  var playerUrl= 'https://api.github.com/users/'+playerName;
+  var json = getJson(playerUrl, "player2");
+  setTimeout(player2ImageChange, 2000);
+});
+
+$('.player3Submit').on('click', function(event) {
+  event.preventDefault(event);
+  var playerName = $('.player3NameTextInput').val();
+  var playerUrl= 'https://api.github.com/users/'+playerName;
+  var json = getJson(playerUrl, "player3");
+  setTimeout(player3ImageChange, 2000);
+});
+
+$('.player4Submit').on('click', function(event) {
+  event.preventDefault(event);
+  var playerName = $('.player4NameTextInput').val();
+  var playerUrl= 'https://api.github.com/users/'+playerName;
+  var json = getJson(playerUrl, "player4");
+  setTimeout(player4ImageChange, 2000);
 });
 
 function player1ImageChange() {
@@ -101,43 +127,24 @@ function player1ImageChange() {
   $('.player1Image').attr('src', playerData.player1.image);
 }
 
+function player2ImageChange() {
+  $('.player1Image').attr('src', " ");
+  console.log("done");
+  console.log(playerData.player2.image);
+  $('.player2Image').attr('src', playerData.player2.image);
+}
 
-// console.log("Am I sane?");
+function player3ImageChange() {
+  $('.player1Image').attr('src', " ");
+  console.log("done");
+  $('.player3Image').attr('src', playerData.player3.image);
+}
 
-
-// FUNCTION PLAYER HANDLING WILL BE A playerHandling();
-//GRAB FORM DATA AND SET TO VARIABLE
-// addPlayer(THESE VARIABLES, THIS VARIABLE)
-//ADD PLAYER TAKES VARIABLES AND PUTS THEM IN A BOX WITH NO NAME
-//THE FUNCTION PLAYER CREATE FILLS THE EMPTY BOX
-
-// function onSubmit() {
-//   var playerNumber;
-//   var playerName;
-//   var playerImage;
-//   $('#bestformonthepage').filter('input').forEach(function(inputEl) {
-//     if (inputEl.getName() === 'player name')
-//       playerName = inputEl.getVal();
-//   })
-//   addPlayer(player1Number, player1Number)
-//   addPlayer(player2Number)
-// }
-
-  // Players.number=number;
-  // this is Players (object).number (IT's TRANSLATING THIS AS A FUCKING STRING LITERALLY NUMBER NOT A VARIABLE A STRING LITERAL)
-
-  // Players[number]=number;
-// THIS IS SAYING HAY TAKE MY OBJECT PLAYERS AND THEN SET A PROPERTY OF THIS OBJECT WHICH IS A VARIABLE EQUAL TO THIS STRING WHICH IS SET BY THE PARAMETER
-// var mystring="my butt"
-// // MY BUTT IS A STRING LITERAL, var myString Is a variable declaration which is being set to a string, NOT A STRING LITERAL, BECAUSE JAVASCRIPT DID SOMETHING TO WITH IT
-//
-// //WHAT I REALLY WANT IS FOR NUMBER TO BE AN OBJECT,
-// PlayerCreate("player1","bill",10);
-// => {'number': "player1"};
-// PlayerCreate("player2","bill",10);
-// => {'number': "player2"};
-// PlayerCreate("player3","bill",10);
-// console.log(Players);
+function player4ImageChange() {
+  $('.player1Image').attr('src', " ");
+  console.log("done");
+  $('.player4Image').attr('src', playerData.player4.image);
+}
 
 function postWin(playerWin) {
   console.log(playerWin + "WINS THE GAME!");
@@ -175,10 +182,6 @@ $('.reset').on('click', function(event) {
   $('.overlayStart').show(1000);
   playerData.winStates.gameStart=0;
 });
-
-function checkWin(playerNumber) {
-
-}
 
 // var width = ((( 100 * parseFloat($(this).css('width')) / parseFloat($(this).parent().css('width')) )) + '%');
 $('body').on('keyup', function(event) {
