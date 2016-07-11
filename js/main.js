@@ -252,6 +252,28 @@ $('body').on('keyup', function(event) {
     var width2 = calculateWidthPercent('.player2Track');
     var width3 = calculateWidthPercent('.player3Track');
     var width4 = calculateWidthPercent('.player4Track');
+    console.log(width1 +"OH MY MY");
+    if (((width1==="30%")||(width2==="30%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
+    }
+    if (((width1==="40%")||(width2==="40%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git add .");
+    }
+    if (((width1==="50%")||(width2==="50%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
+    }
+    if (((width1==="60%")||(width2==="60%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
+    }
+    if (((width1==="70%")||(width2==="70%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
+    }
+    if (((width1==="80%")||(width2==="77%"))) {
+      $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
+    }
+    if (((width1==="84%")||(width2==="82%"))) {
+      $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
+    }
     if (((width1==="88%")||(width2==="88%")||(width3==="88%")||(width4==="88%"))) {
       return;
     }
