@@ -4,16 +4,23 @@
 $('document').ready(function() {
 $('.overlayStart').show(1000);
 var playerData = {};
-addPlayer("player1");
+var playerHiddenCounter=0;
+addPlayer("player1", 'img/runnerBlue.png');
+console.log(playerData.player1.image);
 $('.player1Image').attr('src', playerData.player1.image);
-addPlayer("player2");
+addPlayer("player2", 'img/runnerPurple.png');
 $('.player2Image').attr('src', playerData.player2.image);
 addWinStates("winStates");
+addPlayer("player3", 'img/runnerOrange.png');
+$('.player3Image').attr('src', playerData.player3.image);
+addPlayer("player4", 'img/runnerGreen.png');
+$('.player4Image').attr('src', playerData.player4.image);
 console.log(playerData);
 console.log(playerData.player1.image);
 //I'M CREATING A BOX CALLED PLAYERNUMBER, AND AT THE VERY END, I AM TAKING THIS BOX AND THEN PUTTING INTO MY LARGER BOX (OBJECT) AND THEN ASSIGNED IT THE STRING PLAYER1
-function addPlayer(playerNumber) {
-  playerData[playerNumber]= new PlayerCreate();
+function addPlayer(playerNumber, imageUrl) {
+  console.log(imageUrl);
+  playerData[playerNumber]= new PlayerCreate(imageUrl);
 }
 
 function addWinStates(winStates) {
@@ -25,8 +32,9 @@ function WinStateCreate() {
   this.gameStart = 0;
 }
 
-function PlayerCreate() {
-    this.image = 'img/runner.png';
+function PlayerCreate(imageUrl) {
+    console.log(imageUrl);
+    this.image = imageUrl;
     return this;
 }
 
@@ -89,6 +97,21 @@ $('.startGame').on('click', function(event) {
   startGame();
 });
 
+$('.addPlayersButton').on('click', function(event) {
+  event.preventDefault(event);
+  if (playerHiddenCounter===0) {
+    console.log("test");
+    $('.addPlayerBox3').show();
+    $('.hiddenImageBox3').show();
+    playerHiddenCounter++;
+  }
+  else if (playerHiddenCounter===1) {
+    console.log("test2");
+    $('.addPlayerBox4').show();
+    $('.hiddenImageBox4').show();
+  }
+});
+
 $('.player1Submit').on('click', function(event) {
   event.preventDefault(event);
   var playerName = $('.player1NameTextInput').val();
@@ -107,7 +130,6 @@ $('.player2Submit').on('click', function(event) {
 
 $('.player3Submit').on('click', function(event) {
   event.preventDefault(event);
-  addPlayer("player3");
   $('.player3Image').attr('src', playerData.player3.image);
   var playerName = $('.player3NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
@@ -117,7 +139,6 @@ $('.player3Submit').on('click', function(event) {
 
 $('.player4Submit').on('click', function(event) {
   event.preventDefault(event);
-  addPlayer("player4");
   $('.player4Image').attr('src', playerData.player4.image);
   var playerName = $('.player4NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
@@ -132,20 +153,20 @@ function player1ImageChange() {
 }
 
 function player2ImageChange() {
-  $('.player1Image').attr('src', " ");
+  $('.player2Image').attr('src', " ");
   console.log("done");
   console.log(playerData.player2.image);
   $('.player2Image').attr('src', playerData.player2.image);
 }
 
 function player3ImageChange() {
-  $('.player1Image').attr('src', " ");
+  $('.player3Image').attr('src', " ");
   console.log("done");
   $('.player3Image').attr('src', playerData.player3.image);
 }
 
 function player4ImageChange() {
-  $('.player1Image').attr('src', " ");
+  $('.player4Image').attr('src', " ");
   console.log("done");
   $('.player4Image').attr('src', playerData.player4.image);
 }
