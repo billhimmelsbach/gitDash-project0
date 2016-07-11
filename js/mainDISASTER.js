@@ -103,15 +103,15 @@ $('.startGame').on('click', function(event) {
 
 $('.addPlayersButton').on('click', function(event) {
   event.preventDefault(event);
-  if (playerData.winStates.playerHiddenCounter===0) {
+  playerData.winStates.playerHiddenCounter++;
+  if (playerData.winStates.playerHiddenCounter===1) {
     console.log("test");
     $('.addPlayerBox3').show();
     $('.hiddenImageBox3').show();
     $('.player3Container').show();
     $('.player3Wins').show();
-    playerData.winStates.playerHiddenCounter++;
   }
-  else if (playerData.winStates.playerHiddenCounter===1) {
+  else if (playerData.winStates.playerHiddenCounter===2) {
     console.log("test2");
     $('.addPlayerBox4').show();
     $('.player4Container').show();
@@ -188,10 +188,13 @@ function postWin(playerWin, playerName) {
   var width4 = calculateWidthPercent('.player4Track');
   var widthArray = [width1, width2, width3, width4];
   for (var i = 0; i < widthArray.length; i++) {
-    if (widthArray[i] >= "87%") {
+    console.log(winnerArray);
+    if (widthArray[i] === (("87%")||("88%"))) {
       winnerArray.push("PLAYER " + (i+1));
+      console.log(winnerArray);
     }
-  }
+
+    console.log(winnerArray);
   if (winnerArray.length ===1) {
     var imageUrl = playerData[playerName].image;
     playerData[playerName].wins=+1;
@@ -262,7 +265,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 1", "player1");
       }
     }
-    if(event.which===48) {
+    else if(event.which===48) {
       $('.player2Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player2Track'));
       var widthFinal2 = calculateWidthPercent('.player2Track');
@@ -270,7 +273,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 2", "player2");
       }
     }
-    if(event.which==90) {
+    else if(event.which==90) {
       $('.player3Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player3Track'));
       var widthFinal3 = calculateWidthPercent('.player3Track');
@@ -278,7 +281,7 @@ $('body').on('keyup', function(event) {
           postWin("PLAYER 3", "player3");
       }
     }
-    if(event.which==39) {
+    else if(event.which==39) {
       $('.player4Track').css({marginLeft: '+=1%'});
       console.log(calculateWidthPercent('.player4Track'));
       var widthFinal4 = calculateWidthPercent('.player4Track');
@@ -289,4 +292,46 @@ $('body').on('keyup', function(event) {
   }
 
 });
+  // $('body').on('keyup', function(event) {
+  //   var widthText1 = calculateWidthPercent('.player1Track');
+  //   console.log("WOW" + width1);
+  //   var widthText2 = calculateWidthPercent('.player2Track');
+  //   console.log('WOW' + width2);
+  //   var widthText3=0;
+  //   var widthText4=0;
+  //   if (playerData.winStates.playerHiddenCounter===1) {
+  //   var widthText3 = calculateWidthPercent('.player3Track');
+  //   }
+  //
+  //   if (playerData.winStates.playerHiddenCounter===2) {
+  //   var widthText4 = calculateWidthPercent('.player4Track');
+  //   }
+  //
+  //   if (((widthText1<="40%")||(widthText2<="40%")||(widthText3<="40%")||(widthText4<="40%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
+  //   }
+  //   else if (((width1Text<="50%")||(width2Text<="50%")||(width3Text<="50%")||(width4Text<="50%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git add .");
+  //   }
+  //   else if (((width1Text<="55%")||(width2Text<="55%")||(width3Text<="55%")||(width4Text<="55%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
+  //   }
+  //   else if (((width1Text<="65%")||(Textwidth2<="65%")||(width3Text<="65%")||(width4Text<="65%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
+  //   }
+  //   else if (((width1<="70%")||(width2<="70%")||(width3<="70%")||(width4<="70%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git push origin mister");
+  //   }
+  //   else if (((width1<="75%")||(width2<="75%")||(width3<="75%")||(width4<="75%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git push rigin master");
+  //   }
+  //   else if (((width1<="80%")||(width2<="80%")||(width3<="80%")||(width4<="80%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ get push origin master");
+  //   }
+  //   else if (((width1<="85%")||(width2<="85%")||(width3<="85%")||(width4<="85%"))) {
+  //     $('.windowBar').text("student:gitDash-Project0 student$ git push origin mister");
+  //   }
+  //
+  //
+  // });
 });
