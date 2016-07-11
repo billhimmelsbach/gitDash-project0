@@ -4,7 +4,6 @@
 $('document').ready(function() {
 $('.overlayStart').show(1000);
 var playerData = {};
-var playerHiddenCounter=0;
 addPlayer("player1", 'img/runnerBlue.png');
 console.log(playerData.player1.image);
 $('.player1Image').attr('src', playerData.player1.image);
@@ -30,7 +29,9 @@ function addWinStates(winStates) {
 function WinStateCreate() {
   this.winToggle = 0;
   this.gameStart = 0;
+  this.playerHiddenCounter=0;
 }
+console.log("IMPORTANT" + playerData.winStates.playerHiddenCounter);
 
 function PlayerCreate(imageUrl) {
     console.log(imageUrl);
@@ -100,15 +101,15 @@ $('.startGame').on('click', function(event) {
 
 $('.addPlayersButton').on('click', function(event) {
   event.preventDefault(event);
-  if (playerHiddenCounter===0) {
+  if (playerData.winStates.playerHiddenCounter===0) {
     console.log("test");
     $('.addPlayerBox3').show();
     $('.hiddenImageBox3').show();
     $('.player3Container').show();
     $('.player3Wins').show();
-    playerHiddenCounter++;
+    playerData.winStates.playerHiddenCounter++;
   }
-  else if (playerHiddenCounter===1) {
+  else if (playerData.winStates.playerHiddenCounter===1) {
     console.log("test2");
     $('.addPlayerBox4').show();
     $('.player4Container').show();
@@ -210,7 +211,7 @@ function calculateWidthPercent(parentDiv) {
   return (Math.floor((100-(( 100 * parseFloat($(parentDiv).css('width')) / parseFloat($('.raceBoard').css('width')) )))) + '%');
 }
 
-$('.bigReset').on('click', function(event) {
+$('.bigResetButton').on('click', function(event) {
   event.preventDefault(event);
     $('.bigReset').hide();
     playerData.player1.image = 'img/runnerBlue.png';
@@ -221,6 +222,8 @@ $('.bigReset').on('click', function(event) {
     playerData.player2.wins = 0;
     playerData.player3.wins = 0;
     playerData.player4.wins = 0;
+    playerData.winStates.playerHiddenCounter=0;
+    $('.inputBox').val(null);
   });
 
 
