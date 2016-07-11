@@ -4,6 +4,7 @@
 
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
+  console.log(this.counterWinCondition);
   var playerData = {};
   addPlayer("player1", 'img/runnerBlue.png');
   $('.player1Image').attr('src', playerData.player1.image);
@@ -34,6 +35,7 @@ $('document').ready(function() {
         this.winToggle = 0;
         this.gameStart = 0;
         this.playerHiddenCounter = 0;
+        this.counterWinCondition = 100;
     }
 
     function PlayerCreate(imageUrl) {
@@ -206,7 +208,7 @@ $('document').ready(function() {
             $('.overlayWin').show();
         }
     }
-
+    //**DEPRECIATED CODE - WIN CONDITION AS WIDTH**
     //.css only returns widths in pixels (if the width is located in the CSS file instead of inline in the HTML)
     //this hack takes the pixel output and converts it into a percent
     function calculateWidthPercent(parentDiv) {
@@ -214,6 +216,7 @@ $('document').ready(function() {
     }
 
     //an event listener for the reset button, resets all initial condtitions without page reload
+    //DEPRECIATED CODE
     $('.bigResetButton').on('click', function(event) {
         event.preventDefault(event);
         $('.bigReset').hide();
@@ -277,28 +280,29 @@ $('document').ready(function() {
             //for if statements that moves players when their button is pressed and checks to see if they have finished, if so, run the postWin function
             if (event.which == 49) {
                 $('.player1Track').css({
-                    marginLeft: '+=1%'
+                  marginLeft: '+=1%'
                 });
-                var widthFinal = calculateWidthPercent('.player1Track');
-                if (widthFinal === "88%") {
-                    postWin("PLAYER 1", "player1");
+                playerData.player1.playerWinCounter++;
+            if  (playerData.player1.playerWinCounter===playerData.counterWinCondition) {
+                postWin("PLAYER 1", "1");
                 }
             }
             if (event.which === 48) {
                 $('.player2Track').css({
                     marginLeft: '+=1%'
                 });
-                var widthFinal2 = calculateWidthPercent('.player2Track');
-                if (widthFinal2 === "88%") {
-                    postWin("PLAYER 2", "player2");
+                playerData.player2.playerWinCounter++;
+                if  (playerData.player2.playerWinCounter===playerData.counterWinCondition) {
+                    postWin("PLAYER 2", "2");
                 }
             }
             if (event.which == 90) {
                 $('.player3Track').css({
                     marginLeft: '+=1%'
                 });
+                playerData.player3.playerWinCounter++;
                 var widthFinal3 = calculateWidthPercent('.player3Track');
-                if (widthFinal3 === "88%") {
+                if  (playerData.player3.playerWinCounter===playerData.counterWinCondition) {
                     postWin("PLAYER 3", "player3");
                 }
             }
@@ -306,8 +310,9 @@ $('document').ready(function() {
                 $('.player4Track').css({
                     marginLeft: '+=1%'
                 });
+                playerData.player4.playerWinCounter++;
                 var widthFinal4 = calculateWidthPercent('.player4Track');
-                if (widthFinal4 === "80%") {
+                if  (playerData.player4.playerWinCounter===playerData.counterWinCondition) {
                     postWin("PLAYER 4", "player4");
                 }
             }
