@@ -48,7 +48,7 @@ function getJson (playerUrl, playerName) {
     failure: onFailure,
   });
   function onFailure(json) {
-    console.log('error!!!');
+    $('.titleTextUnder').html("ERROR AJAX REQUEST SERVER DOWN! OOOOOPS!");
   }
 
   function onSuccess(json){
@@ -103,11 +103,13 @@ $('.addPlayersButton').on('click', function(event) {
     console.log("test");
     $('.addPlayerBox3').show();
     $('.hiddenImageBox3').show();
+    $('.player3Container').show();
     playerHiddenCounter++;
   }
   else if (playerHiddenCounter===1) {
     console.log("test2");
     $('.addPlayerBox4').show();
+    $('.player4Container').show();
     $('.hiddenImageBox4').show();
   }
 });
