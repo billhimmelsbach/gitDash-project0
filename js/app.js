@@ -31,49 +31,77 @@ function PlayerCreate() {
 }
 
 function getJson (playerUrl, playerName) {
+  var test = playerName;
   console.log(playerUrl);
   $.ajax({
     type:"GET",
     dataType:"json",
     url: playerUrl,
-    success: onSuccess(playerName),
+    success: onSuccess,
     failure: onFailure,
   });
+  function onFailure(json) {
+    console.log('error!!!');
+  }
+
+  function onSuccess(json){
+    console.log(json);
+    console.log(json.avatar_url);
+    console.log(test);
+    playerData[test]["image"]= json.avatar_url;
+    console.log(player1.image);
+
+  }
 }
 
-function onFailure(json) {
-  console.log('error!!!');
 
-
-}
-
-function onSuccess(json){
-  console.log(json);
-
-  console.log(json.avatar_url);
-  player1Url= json.avatar_url;
-
-}
-
+var counter = 2;
 function justin2() {
-  $('.justinRightSide').attr('src', 'justin2.png');
-  setTimeout(justin1, 1000);
+  $('.justinRightSide').attr('src', 'img/justin2.png');
+  counter--;
+  timer();
+  return;
 }
 
 function justin1() {
-  $('.justinRightSide').attr('src', 'justin1.png');
+  $('.justinRightSide').attr('src', 'img/justin1.png');
+  counter--;
+  timer();
+  return;
 }
 
 function startGame() {
   $('.overlayStart').hide();
   $('.raceBoard').show(1000);
   $('.justinRightSide').show(1000);
-  setTimeout(justin2, 2000);
+  setTimeout(function() {
+    $('.justinRightSide').attr('src', 'img/justin2.png');
+  }, 1000);
+  setTimeout(function() {
+    $('.justinRightSide').attr('src', 'img/justin1.png');
+  }, 2000);
+  setTimeout(function() {
+    $('.justinRightSide').attr('src', 'img/justinGo.png');
+  }, 3000);
+  setTimeout(function() {
+    playerData.winStates.gameStart=1;
+  }, 3000);
+  setTimeout(function() {
+    $('.justinRightSide').hide(1000);
+  }, 4000);
+
+
+}
+  // if (counter==0)
+  // if (counter==0) {
+  // setTimeout
+  // }
+
   // setTimeout(function() {
   //   $('.justinRightSide').attr('src', 'justinGo.png')
   // }, 2000);
 
-
+  //
   // $('.justinImageRight').animate({width: '0px'}, 1000, function() {
   //                   $(this).hide();
   //                   $('justinImageRight').animate({width: 'auto'}, 1000, function() {
@@ -83,8 +111,7 @@ function startGame() {
   //               }
   //           );
 
-  playerData.winStates.gameStart=1;
-}
+
 
 $('.startGame').on('click', function(event) {
   startGame();
@@ -96,7 +123,7 @@ $('.player1Submit').on('click', function(event) {
   var playerName = $('.player1NameTextInput').val();
   var playerUrl= 'https://api.github.com/users/'+playerName;
   console.log(playerUrl, playerName);
-  var json = getJson(playerUrl);
+  var json = getJson(playerUrl, "playerOne");
   setTimeout(player1ImageChange, 2000);
   console.log("bigtest");
   console.log(json);
