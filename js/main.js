@@ -171,6 +171,7 @@ $('document').ready(function() {
             $('.overlayWin').show();
         } else {
             $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?!<br>PLAY AGAIN!");
+            $('.scoreboard').html("Player 1 = " + playerData[1].wins + " wins  Player 2 = " + playerData[2].wins + " wins<br>Player 3 = " + playerData[3].wins + " wins  Player 4 = " + playerData[4].wins + " wins");
             $('.winnerImage').hide();
             $('.overlayWin').show();
         }
