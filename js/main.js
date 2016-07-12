@@ -36,7 +36,7 @@ $('document').ready(function() {
     this.winToggle = 0;
     this.gameStart = 0;
     this.playerHiddenCounter = 0;
-    this.COUNTER_WIN_CONDITION = 100;
+    this.COUNTER_WIN_CONDITION = 90;
     return this;
   }
   function PlayerCreate(playerNumber, imageUrl) {
@@ -82,8 +82,10 @@ $('document').ready(function() {
       $('.overlayStart').hide();
       $('.raceBoard').show(1000);
       $('.justinRightSide').show(1000);
+      $('.justinRightSide').attr('src', 'img/justin3.png');
 
       //a timeout function built into StartGame() to have a countdown on the justin object and also allow player interaction at the word "go"
+
       setTimeout(function() {
           $('.justinRightSide').attr('src', 'img/justin2.png');
       }, 2000);
@@ -95,22 +97,23 @@ $('document').ready(function() {
       }, 4000);
       setTimeout(function() {
           globalStates.gameStart = 1;
+          console.log("fire!");
       }, 4000);
       setTimeout(function() {
           $('.justinRightSide').hide(1000);
-      }, 5000);
+      }, 6000);
   }
 
     //listener for add player button that reveals hidden divs, including a counter that differentiates when it's time for player 3 versus 4 to appear
     $('.addPlayersButton').on('click', function(event) {
         event.preventDefault(event);
-        if (globalStates.gameStart === 0) {
+        if (globalStates.playerHiddenCounter === 1) {
             $('.addPlayerBox3').show();
             $('.hiddenImageBox3').show();
             $('.player3Container').show();
             $('.player3Wins').show();
             globalStates.playerHiddenCounter++;
-        } else if (globalStates.playerHiddenCounter === 1) {
+        } else if (globalStates.playerHiddenCounter === 2) {
             $('.addPlayerBox4').show();
             $('.player4Container').show();
             $('.hiddenImageBox4').show();
@@ -152,6 +155,7 @@ $('document').ready(function() {
 
     //the function that determines what to do after a win: winner or tie. Then generates the content for the win overlay
     function postWin(playerWin, playerNumber) {
+        globalStates.gameStart = 0
         var winnerArray=[];
         var playerCounterArray = [];
         var playerCountArray = [playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter];
@@ -182,6 +186,7 @@ $('document').ready(function() {
     $('.bigResetButton').on('click', function(event) {
         event.preventDefault(event);
         $('.bigReset').hide();
+        playerData[1].playerWinCounter=0;
         playerData[1].image = 'img/runnerBlue.png';
         playerData[2].image = 'img/runnerPurple.png';
         playerData[3].image = 'img/runnerOrange.png';
@@ -198,6 +203,10 @@ $('document').ready(function() {
     $('.reset').on('click', function(event) {
         music1.pause();
         music1.currentTime = 0;
+        playerData[1].playerWinCounter=0;
+        playerData[2].playerWinCounter=0;
+        playerData[3].playerWinCounter=0;
+        playerData[4].playerWinCounter=0;
         $('.playerTracks').css({
             marginLeft: '0%'
         });
@@ -209,7 +218,9 @@ $('document').ready(function() {
 
     //the main event listener that responds to when one of the player keys are pressed, based on the width of the column: this function pushes the margin closer to the edge
     $('body').on('keyup', function(event) {
-        if (globalStates.gameStart !== 0) {
+console.log(globalStates.gameStart);
+        if (globalStates.gameStart === 1) {
+
             //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
             // if (((width1 === "30%") || (width2 === "30%"))) {
             //     $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
@@ -243,6 +254,7 @@ $('document').ready(function() {
                 playerData[1].playerWinCounter++;
                 console.log(playerData[1].playerWinCounter);
             if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+                globalStates.gameStart = 0;
                 postWin("PLAYER 1", 1);
                 }
             }
@@ -252,6 +264,7 @@ $('document').ready(function() {
                 });
                 playerData[2].playerWinCounter++;
                 if  (playerData[2].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+                    globalStates.gameStart = 0;
                     postWin("PLAYER 2", 2);
                 }
             }
@@ -261,6 +274,7 @@ $('document').ready(function() {
                 });
                 playerData[3].playerWinCounter++;
                 if  (playerData[3].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+                    globalStates.gameStart = 0;
                     postWin("PLAYER 3", 3);
                 }
             }
@@ -269,10 +283,11 @@ $('document').ready(function() {
                     marginLeft: '+=1%'
                 });
                 playerData[4].playerWinCounter++;
-                if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+                if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION){
+                    globalStates.gameStart = 0;
                     postWin("PLAYER 4", 4);
                 }
             }
-        }
+          }
     });
 });
