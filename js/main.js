@@ -11,16 +11,9 @@ $('document').ready(function() {
   $('.player3Image').attr('src', playerData[3].image);
   addPlayer(4, 'img/runnerGreen.png');
   $('.player4Image').attr('src', playerData[4].image);
-  console.log(playerData[4].playerWinCounter);
-  console.log(playerData);
-  console.log(globalStates);
-  console.log(globalStates.COUNTER_WIN_CONDITION);
-
   $('.overlayStart').show(1000);
   //music begins to buffer
   var music1 = new Audio("sound/music1.mp3");
-  console.log(playerData[1].image);
-  console.log(playerData);
 
   //now that the basic environment has been set, function definitions
   //object Constructors and helper functions to create playerData object
@@ -65,7 +58,6 @@ $('document').ready(function() {
       playerData[playerNumber].image = json.avatar_url;
       playerData[playerNumber].username=json.login;
       $('.player' + playerNumber + 'Image').attr('src', playerData[playerNumber].image);
-      console.log(playerData);
     }
   }
 
@@ -94,8 +86,6 @@ $('document').ready(function() {
       }, 3000);
       setTimeout(function() {
           globalStates.gameStart = 1;
-          console.log("fire!");
-          console.log(globalStates.gameStart);
       }, 3999);
       setTimeout(function() {
           $('.justinRightSide').attr('src', 'img/justinGo.png');
@@ -161,16 +151,13 @@ $('document').ready(function() {
         var playerCounterArray = [];
         var playerCountArray = [playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter];
         //a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
-        console.log(playerCountArray);
         for (var i = 0; i < playerCountArray.length; i++) {
             if (playerCountArray[i]>=(globalStates.COUNTER_WIN_CONDITION)-1) {
                 winnerArray.push(i + 1);
-                console.log(winnerArray);
             }
         }
         //if there is one winner
         if (winnerArray.length === 1) {
-            console.log(winnerArray);
             var imageUrl = playerData[playerNumber].image;
             playerData[playerNumber].wins = +1;
             $('.winnerImage').show();
@@ -221,7 +208,6 @@ $('document').ready(function() {
 
     function determineLeaderCounter() {
       var leaderWinCounter = Math.max(playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter);
-      console.log(leaderWinCounter);
       return leaderWinCounter;
     }
 
@@ -260,7 +246,6 @@ $('document').ready(function() {
 
 // if (globalStates.gameStart === 1) {
 $('body').on('keyup', function(event) {
-console.log(globalStates.gameStart);
     if (globalStates.gameStart === 1) {
       funnyConsoleTextGenerator();
 
@@ -270,7 +255,6 @@ console.log(globalStates.gameStart);
               marginLeft: '+=1%'
             });
             playerData[1].playerWinCounter++;
-            console.log(playerData[1].playerWinCounter);
         if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
             globalStates.gameStart = 0;
             postWin("PLAYER 1", 1);
