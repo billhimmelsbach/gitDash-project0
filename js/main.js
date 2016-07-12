@@ -192,10 +192,9 @@ $('document').ready(function() {
         playerData[2].image = 'img/runnerPurple.png';
         playerData[3].image = 'img/runnerOrange.png';
         playerData[4].image = 'img/runnerGreen.png';
-        playerData[1].wins = 0;
-        playerData[2].wins = 0;
-        playerData[3].wins = 0;
-        playerData[4].wins = 0;
+        for (var i = 1; i < playerData.length; i++) {
+          playerData[i].wins = 0;
+        }
         globalStates.playerHiddenCounter = 0;
         $('.inputBox').val(null);
     });
