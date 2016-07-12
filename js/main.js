@@ -163,7 +163,7 @@ $('document').ready(function() {
         //if there is one winner
         if (winnerArray.length === 1) {
             var imageUrl = playerData[playerNumber].image;
-            playerData[playerNumber].wins = +1;
+            playerData[playerNumber].wins++;
             $('.winnerImage').show();
             $('.winnerImage').attr('src', imageUrl);
             $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
