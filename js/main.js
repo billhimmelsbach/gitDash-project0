@@ -38,66 +38,67 @@ $('document').ready(function() {
     this.COUNTER_WIN_CONDITION = 100;
     return this;
   }
-    function PlayerCreate(playerNumber, imageUrl) {
-        this.image = imageUrl;
-        this.wins = 0;
-        this.playerWinCounter=0;
-        this.username="Player" + playerNumber;
-        return this;
-    }
+  function PlayerCreate(playerNumber, imageUrl) {
+    this.image = imageUrl;
+    this.wins = 0;
+    this.playerWinCounter=0;
+    this.username="Player" + playerNumber;
+    return this;
+  }
 
-    //AJAX request function, and related helper functions
-    function getJson(playerUrl, playerName, playerNumber) {
-        $.ajax({
-          type: "GET",
-          dataType: "json",
-          url: playerUrl,
-          success: onSuccess,
-          failure: onFailure,
-        });
-
-        function onFailure(json) {
-          $('.titleTextUnder').html("ERROR AJAX REQUEST SERVER DOWN! OOOOOPS!");
-        }
-
-        function onSuccess(json) {
-          playerData[playerNumber].image = json.avatar_url;
-          playerData[playerNumber].username=json.login;
-          $('.player' + playerNumber + 'Image').attr('src', playerData[playerNumber].image);
-        }
-      }
-
-    //function that runs when start game button is pressed
-    function startGame() {
-        //music plays
-        music1.play();
-        //overlay is set to hidden, while board shows
-        $('.overlayStart').hide();
-        $('.raceBoard').show(1000);
-        $('.justinRightSide').show(1000);
-
-        //a timeout function built into StartGame() to have a countdown on the justin object and also allow player interaction at the word "go"
-        setTimeout(function() {
-            $('.justinRightSide').attr('src', 'img/justin2.png');
-        }, 2000);
-        setTimeout(function() {
-            $('.justinRightSide').attr('src', 'img/justin1.png');
-        }, 3000);
-        setTimeout(function() {
-            $('.justinRightSide').attr('src', 'img/justinGo.png');
-        }, 4000);
-        setTimeout(function() {
-            playerData.winStates.gameStart = 1;
-        }, 4000);
-        setTimeout(function() {
-            $('.justinRightSide').hide(1000);
-        }, 5000);
-    }
-
-    //an event listener for on start game button
-    $('.startGame').on('click', function(event) {
-        startGame();
+  //AJAX request function, and related helper functions
+  function getJson(playerUrl, playerName, playerNumber) {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: playerUrl,
+      success: onSuccess,
+      failure: onFailure,
     });
+
+    function onFailure(json) {
+      $('.titleTextUnder').html("ERROR AJAX REQUEST SERVER DOWN! OOOOOPS!");
+    }
+
+    function onSuccess(json) {
+      playerData[playerNumber].image = json.avatar_url;
+      playerData[playerNumber].username=json.login;
+      $('.player' + playerNumber + 'Image').attr('src', playerData[playerNumber].image);
+      console.log(playerData);
+    }
+  }
+
+  //an event listener for on start game button
+  $('.startGame').on('click', function(event) {
+      startGame();
+  });
+
+  //function that runs when start game button is pressed
+  function startGame() {
+      //music plays
+      music1.play();
+      //overlay is set to hidden, while board shows
+      $('.overlayStart').hide();
+      $('.raceBoard').show(1000);
+      $('.justinRightSide').show(1000);
+
+      //a timeout function built into StartGame() to have a countdown on the justin object and also allow player interaction at the word "go"
+      setTimeout(function() {
+          $('.justinRightSide').attr('src', 'img/justin2.png');
+      }, 2000);
+      setTimeout(function() {
+          $('.justinRightSide').attr('src', 'img/justin1.png');
+      }, 3000);
+      setTimeout(function() {
+          $('.justinRightSide').attr('src', 'img/justinGo.png');
+      }, 4000);
+      setTimeout(function() {
+          playerData.winStates.gameStart = 1;
+      }, 4000);
+      setTimeout(function() {
+          $('.justinRightSide').hide(1000);
+      }, 5000);
+  }
 
     //listener for add player button that reveals hidden divs, including a counter that differentiates when it's time for player 3 versus 4 to appear
     $('.addPlayersButton').on('click', function(event) {
