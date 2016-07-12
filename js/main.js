@@ -209,6 +209,7 @@ $('document').ready(function() {
         playerData[2].playerWinCounter=0;
         playerData[3].playerWinCounter=0;
         playerData[4].playerWinCounter=0;
+        funnyConsoleTextGenerator();
         $('.playerTracks').css({
             marginLeft: '0%'
         });
@@ -227,7 +228,10 @@ $('document').ready(function() {
     function funnyConsoleTextGenerator() {
       var leaderWinCounter = determineLeaderCounter();
       //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
-      if (leaderWinCounter <= 30) {
+      if (leaderWinCounter === 0) {
+          $('.windowBar').text("student:gitDash-Project0 student$ OH GOD WHEN IS THIS DUE");
+      }
+      else if (leaderWinCounter <= 30) {
           $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
       }
       else if (leaderWinCounter <= 40) {
