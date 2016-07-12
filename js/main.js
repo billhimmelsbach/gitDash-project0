@@ -135,7 +135,7 @@ $('document').ready(function() {
 
     $('.player3Submit').on('click', function(event) {
         event.preventDefault(event);
-        $('.player3Image').attr('src', playerData.player3.image);
+        $('.player3Image').attr('src', playerData[3].image);
         var playerName = $('.player3NameTextInput').val();
         var playerUrl = 'https://api.github.com/users/' + playerName;
         var json = getJson(playerUrl, "player3", 3);
@@ -143,7 +143,7 @@ $('document').ready(function() {
 
     $('.player4Submit').on('click', function(event) {
         event.preventDefault(event);
-        $('.player4Image').attr('src', playerData.player4.image);
+        $('.player4Image').attr('src', playerData[4].image);
         var playerName = $('.player4NameTextInput').val();
         var playerUrl = 'https://api.github.com/users/' + playerName;
         var json = getJson(playerUrl, "player4", 4);
@@ -151,23 +151,27 @@ $('document').ready(function() {
     });
 
     //the function that determines what to do after a win: winner or tie. Then generates the content for the win overlay
-    function postWin(playerWin, playerName) {
+    function postWin(playerWin, playerNumber) {
+        var winnerArray=[];
         var playerCounterArray = [];
-        var playerCountArray = [playerData.player1.playerWinCounter, playerData.player2.playerWinCounter, playerData.player3.playerWinCounter, playerData.player4.playerWinCounter];
+        var playerCountArray = [playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter];
         //a for loop that determines a tie by pushing players who are within one increment away into an array of winners in order to make up for the single thread of JS and my design choices
+        console.log(playerCountArray);
         for (var i = 0; i < playerCountArray.length; i++) {
-            if (playerCountArray[i]===playerData.winStates.counterWinCondition-1) {
+            if (playerCountArray[i]>=(globalStates.COUNTER_WIN_CONDITION)-1) {
                 winnerArray.push(i + 1);
+                console.log(winnerArray);
             }
         }
         //if there is one winner
         if (winnerArray.length === 1) {
-            var imageUrl = playerData[playerName].image;
-            playerData[playerName].wins = +1;
+            console.log(winnerArray);
+            var imageUrl = playerData[playerNumber].image;
+            playerData[playerNumber].wins = +1;
             $('.winnerImage').show();
             $('.winnerImage').attr('src', imageUrl);
             $('.playerWinText').html(playerWin + " SUBMITS PULL REQUEST!!!!!111``7");
-            $('.scoreboard').html("Player 1 = " + playerData.player1.wins + " wins  Player 2 = " + playerData.player2.wins + " wins<br>Player 3 = " + playerData.player3.wins + " wins  Player 4 = " + playerData.player4.wins + " wins");
+            $('.scoreboard').html("Player 1 = " + playerData[1].wins + " wins  Player 2 = " + playerData[2].wins + " wins<br>Player 3 = " + playerData[3].wins + " wins  Player 4 = " + playerData[4].wins + " wins");
             $('.overlayWin').show();
         } else {
             $('.playerWinText').html("THERE'S A PULL REQUEST TIE?!?!?!<br>PLAY AGAIN!");
@@ -237,8 +241,9 @@ $('document').ready(function() {
                   marginLeft: '+=1%'
                 });
                 playerData[1].playerWinCounter++;
+                console.log(playerData[1].playerWinCounter);
             if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                postWin("PLAYER 1", "1");
+                postWin("PLAYER 1", 1);
                 }
             }
             else if (event.which === 48) {
@@ -247,7 +252,7 @@ $('document').ready(function() {
                 });
                 playerData[2].playerWinCounter++;
                 if  (playerData[2].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                    postWin("PLAYER 2", "2");
+                    postWin("PLAYER 2", 2);
                 }
             }
             else if (event.which == 90) {
@@ -256,7 +261,7 @@ $('document').ready(function() {
                 });
                 playerData[3].playerWinCounter++;
                 if  (playerData[3].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                    postWin("PLAYER 3", "player3");
+                    postWin("PLAYER 3", 3);
                 }
             }
             else if (event.which == 39) {
@@ -265,7 +270,7 @@ $('document').ready(function() {
                 });
                 playerData[4].playerWinCounter++;
                 if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                    postWin("PLAYER 4", "player4");
+                    postWin("PLAYER 4", 4);
                 }
             }
         }
