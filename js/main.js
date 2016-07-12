@@ -14,7 +14,7 @@ $('document').ready(function() {
   console.log(playerData[1].playerWinCounter);
   console.log(playerData);
   console.log(globalStates);
-  console.log(globalStates.gameStart);
+  console.log(globalStates.COUNTER_WIN_CONDITION);
 
   $('.overlayStart').show(1000);
   //music begins to buffer
@@ -178,15 +178,15 @@ $('document').ready(function() {
     $('.bigResetButton').on('click', function(event) {
         event.preventDefault(event);
         $('.bigReset').hide();
-        playerData.player1.image = 'img/runnerBlue.png';
-        playerData.player2.image = 'img/runnerPurple.png';
-        playerData.player3.image = 'img/runnerOrange.png';
-        playerData.player4.image = 'img/runnerGreen.png';
-        playerData.player1.wins = 0;
-        playerData.player2.wins = 0;
-        playerData.player3.wins = 0;
-        playerData.player4.wins = 0;
-        playerData.winStates.playerHiddenCounter = 0;
+        playerData[1].image = 'img/runnerBlue.png';
+        playerData[2].image = 'img/runnerPurple.png';
+        playerData[3].image = 'img/runnerOrange.png';
+        playerData[4].image = 'img/runnerGreen.png';
+        playerData[1].wins = 0;
+        playerData[2].wins = 0;
+        playerData[3].wins = 0;
+        playerData[4].wins = 0;
+        globalStates.playerHiddenCounter = 0;
         $('.inputBox').val(null);
     });
 
@@ -200,16 +200,12 @@ $('document').ready(function() {
         $('.overlayWin').hide();
         $('.raceBoard').hide();
         $('.overlayStart').show(1000);
-        playerData.winStates.gameStart = 0;
+        globalStates.gameStart = 0;
     });
 
     //the main event listener that responds to when one of the player keys are pressed, based on the width of the column: this function pushes the margin closer to the edge
     $('body').on('keyup', function(event) {
-        if (playerData.winStates.gameStart !== 0) {
-            var width1 = calculateWidthPercent('.player1Track');
-            var width2 = calculateWidthPercent('.player2Track');
-            var width3 = calculateWidthPercent('.player3Track');
-            var width4 = calculateWidthPercent('.player4Track');
+        if (globalStates.gameStart !== 0) {
             //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
             if (((width1 === "30%") || (width2 === "30%"))) {
                 $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
