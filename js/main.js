@@ -184,6 +184,8 @@ $('document').ready(function() {
             $('.overlayWin').show();
         }
     }
+
+    //event listener for when a player hits the reset button on the startOverlay
     $('.bigResetButton').on('click', function(event) {
         event.preventDefault(event);
         $('.bigReset').hide();
@@ -199,7 +201,7 @@ $('document').ready(function() {
         $('.inputBox').val(null);
     });
 
-    //event lister for new game button, soft reset of some conditions
+    //event listener for new game button, soft reset of some conditions
     $('.reset').on('click', function(event) {
         music1.pause();
         music1.currentTime = 0;
@@ -241,7 +243,7 @@ $('document').ready(function() {
           $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
       }
       else if (leaderWinCounter <= 80) {
-          $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
+          $('.windowBar').text("student:gitDash-Project0 student$ git push origin master");
       }
       else if (leaderWinCounter <= 85) {
           $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
