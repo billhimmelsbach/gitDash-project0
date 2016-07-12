@@ -188,6 +188,7 @@ $('document').ready(function() {
         playerData[4].image = 'img/runnerGreen.png';
         for (var i = 1; i < playerData.length; i++) {
             playerData[i].wins = 0;
+            $('.player' + i + 'Image').attr('src', playerData[i].image);
         }
         globalStates.playerHiddenCounter = 0;
         $('.inputBox').val(null);
