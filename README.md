@@ -35,5 +35,4 @@
 
 ---
 
-##### Screenshot (optional)
 ![gitDASH!](img/screenshot.png?raw=true "gitDASH!")
