@@ -93,11 +93,12 @@ $('document').ready(function() {
           $('.justinRightSide').attr('src', 'img/justin1.png');
       }, 3000);
       setTimeout(function() {
-          $('.justinRightSide').attr('src', 'img/justinGo.png');
-      }, 4000);
-      setTimeout(function() {
           globalStates.gameStart = 1;
           console.log("fire!");
+          console.log(globalStates.gameStart);
+      }, 3999);
+      setTimeout(function() {
+          $('.justinRightSide').attr('src', 'img/justinGo.png');
       }, 4000);
       setTimeout(function() {
           $('.justinRightSide').hide(1000);
@@ -155,7 +156,7 @@ $('document').ready(function() {
 
     //the function that determines what to do after a win: winner or tie. Then generates the content for the win overlay
     function postWin(playerWin, playerNumber) {
-        globalStates.gameStart = 0
+        globalStates.gameStart = 0;
         var winnerArray=[];
         var playerCounterArray = [];
         var playerCountArray = [playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter];
@@ -216,78 +217,90 @@ $('document').ready(function() {
         globalStates.gameStart = 0;
     });
 
-    //the main event listener that responds to when one of the player keys are pressed, based on the width of the column: this function pushes the margin closer to the edge
-    $('body').on('keyup', function(event) {
-console.log(globalStates.gameStart);
-        if (globalStates.gameStart === 1) {
+    function determineLeaderCounter() {
+      var leaderWinCounter = Math.max(playerData[1].playerWinCounter, playerData[2].playerWinCounter, playerData[3].playerWinCounter, playerData[4].playerWinCounter);
+      console.log(leaderWinCounter);
+      return leaderWinCounter;
+    }
 
-            //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
-            // if (((width1 === "30%") || (width2 === "30%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
-            // }
-            // if (((width1 === "40%") || (width2 === "40%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ git add .");
-            // }
-            // if (((width1 === "50%") || (width2 === "50%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
-            // }
-            // if (((width1 === "60%") || (width2 === "60%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
-            // }
-            // if (((width1 === "70%") || (width2 === "70%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
-            // }
-            // if (((width1 === "80%") || (width2 === "77%"))) {
-            //     $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
-            // }
-            // if (((width1 === "84%") || (width2 === "82%"))) {
-            //     $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
-            // }
-            // if (((width1 === "88%") || (width2 === "88%") || (width3 === "88%") || (width4 === "88%"))) {
-            //     return;
-            // }
-            //for if statements that moves players when their button is pressed and checks to see if they have finished, if so, run the postWin function
-            if (event.which == 49) {
-                $('.player1Track').css({
-                  marginLeft: '+=1%'
-                });
-                playerData[1].playerWinCounter++;
-                console.log(playerData[1].playerWinCounter);
-            if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+    function funnyConsoleTextGenerator() {
+      var leaderWinCounter = determineLeaderCounter();
+      //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
+      if (leaderWinCounter <= 30) {
+          $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
+      }
+      else if (leaderWinCounter <= 40) {
+          $('.windowBar').text("student:gitDash-Project0 student$ git add .");
+      }
+      else if (leaderWinCounter <= 50) {
+          $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
+      }
+      else if (leaderWinCounter <= 60) {
+          $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
+      }
+      else if (leaderWinCounter <= 70) {
+          $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
+      }
+      else if (leaderWinCounter <= 80) {
+          $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
+      }
+      else if (leaderWinCounter <= 85) {
+          $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
+      }
+
+    }
+
+
+    //the main event listener that responds to when one of the player keys are pressed, based on the global counter: this function pushes the margin closer to the edge
+
+// if (globalStates.gameStart === 1) {
+$('body').on('keyup', function(event) {
+console.log(globalStates.gameStart);
+    if (globalStates.gameStart === 1) {
+      funnyConsoleTextGenerator();
+
+        //for if statements that moves players when their button is pressed and checks to see if they have finished, if so, run the postWin function
+        if (event.which == 49) {
+            $('.player1Track').css({
+              marginLeft: '+=1%'
+            });
+            playerData[1].playerWinCounter++;
+            console.log(playerData[1].playerWinCounter);
+        if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+            globalStates.gameStart = 0;
+            postWin("PLAYER 1", 1);
+            }
+        }
+        else if (event.which === 48) {
+            $('.player2Track').css({
+                marginLeft: '+=1%'
+            });
+            playerData[2].playerWinCounter++;
+            if  (playerData[2].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
                 globalStates.gameStart = 0;
-                postWin("PLAYER 1", 1);
-                }
+                postWin("PLAYER 2", 2);
             }
-            else if (event.which === 48) {
-                $('.player2Track').css({
-                    marginLeft: '+=1%'
-                });
-                playerData[2].playerWinCounter++;
-                if  (playerData[2].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                    globalStates.gameStart = 0;
-                    postWin("PLAYER 2", 2);
-                }
+        }
+        else if (event.which == 90) {
+            $('.player3Track').css({
+                marginLeft: '+=1%'
+            });
+            playerData[3].playerWinCounter++;
+            if  (playerData[3].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
+                globalStates.gameStart = 0;
+                postWin("PLAYER 3", 3);
             }
-            else if (event.which == 90) {
-                $('.player3Track').css({
-                    marginLeft: '+=1%'
-                });
-                playerData[3].playerWinCounter++;
-                if  (playerData[3].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
-                    globalStates.gameStart = 0;
-                    postWin("PLAYER 3", 3);
-                }
+        }
+        else if (event.which == 39) {
+            $('.player4Track').css({
+                marginLeft: '+=1%'
+            });
+            playerData[4].playerWinCounter++;
+            if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION){
+                globalStates.gameStart = 0;
+                postWin("PLAYER 4", 4);
             }
-            else if (event.which == 39) {
-                $('.player4Track').css({
-                    marginLeft: '+=1%'
-                });
-                playerData[4].playerWinCounter++;
-                if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION){
-                    globalStates.gameStart = 0;
-                    postWin("PLAYER 4", 4);
-                }
-            }
-          }
-    });
+        }
+      }
+  });
 });
