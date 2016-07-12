@@ -11,7 +11,10 @@ $('document').ready(function() {
   $('.player3Image').attr('src', playerData[3].image);
   addPlayer(4, 'img/runnerGreen.png');
   $('.player4Image').attr('src', playerData[4].image);
-  $('.overlayStart').show(1000);
+  //show desktop before showing overlayStartray
+  setTimeout(function() {
+      $('.overlayStart').show(700);
+  }, 1000);
   //music begins to buffer
   var music1 = new Audio("sound/music1.mp3");
 
