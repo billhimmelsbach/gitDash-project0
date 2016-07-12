@@ -29,7 +29,7 @@
 * More responsiveness design, particularly for small and large devices with more precise Bootstrap and CSS styling
 * A refactoring run to cut down on repetition. Replace brute force methods that were inserted due to time constraints with DRY code.
 * Although there is an error message for AJAX server failure, there needs to be a fail message if a player's username doesn't exist as typed. Methods were attempted but failed.
-* The margin based win condition, while successful at avoiding a global variable, bogs down the system with unnecessary width checks. While the initial impetus was to avoid global variables, this is an instance where one might make the program much more dry and efficient, particularly in four player games and older hardware.
+~~The margin based win condition, while successful at avoiding a global variable, bogs down the system with unnecessary width checks. While the initial impetus was to avoid global variables, this is an instance where one might make the program much more dry and efficient, particularly in four player games and older hardware.
 * More humor through creative use of theme. Instant message overlays, mock Stack Overflow searches, meme based humor in the default icons, etc.
 * A HTML 5 color selector was planned for the player progress bars but cut due to time. The progress bars would also benefit from a progress bar animation.
 
