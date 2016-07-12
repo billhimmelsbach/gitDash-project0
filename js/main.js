@@ -14,6 +14,7 @@ $('document').ready(function() {
   console.log(playerData[1].playerWinCounter);
   console.log(playerData);
   console.log(globalStates);
+  console.log(globalStates.gameStart);
 
   $('.overlayStart').show(1000);
   //music begins to buffer
@@ -93,7 +94,7 @@ $('document').ready(function() {
           $('.justinRightSide').attr('src', 'img/justinGo.png');
       }, 4000);
       setTimeout(function() {
-          playerData.winStates.gameStart = 1;
+          globalStates.gameStart = 1;
       }, 4000);
       setTimeout(function() {
           $('.justinRightSide').hide(1000);
@@ -103,19 +104,19 @@ $('document').ready(function() {
     //listener for add player button that reveals hidden divs, including a counter that differentiates when it's time for player 3 versus 4 to appear
     $('.addPlayersButton').on('click', function(event) {
         event.preventDefault(event);
-        if (playerData.winStates.playerHiddenCounter === 0) {
+        if (globalStates.gameStart === 0) {
             $('.addPlayerBox3').show();
             $('.hiddenImageBox3').show();
             $('.player3Container').show();
             $('.player3Wins').show();
-            playerData.winStates.playerHiddenCounter++;
-        } else if (playerData.winStates.playerHiddenCounter === 1) {
+            globalStates.playerHiddenCounter++;
+        } else if (globalStates.playerHiddenCounter === 1) {
             $('.addPlayerBox4').show();
             $('.player4Container').show();
             $('.hiddenImageBox4').show();
             $('.player4Wins').show();
         }
-    });
+      });
 
     //four event listerners waiting to hear from the submit buttons to send data to the AJAX function
     $('.player1Submit').on('click', function(event) {
