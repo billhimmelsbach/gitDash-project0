@@ -1,3 +1,56 @@
+//these two commented-out functions are for testing the style of windows without having to trigger them within the game
+// $('.overlayWin').show();
+// // $('.overlayStart').hide();
+// //if ($(document).keyup()
+// PASS A FUNCTION AN ENTIRE OBJECT
+// var MOVE_AMOUNT = +40px
+// var p1= {
+//   charCode: ONE_CHAR_CODE,
+//   position: 0,
+//   number 2
+//   $el:$(".player" + 2)
+// };
+// var p2 = {
+//   charCode: Zero_CHAR_CODE
+//   number: 1
+// };
+// }
+// $(document).keyup(evalueateKeypress);
+//
+// // function evalueateKeypress() {
+//   function move(player) {
+//     player.position++
+//     (".player" + player.number).css("left, player.positon * MOVE_AMOUNT);
+//
+// if ($(".container").width() <= player.$el.offset().left + player.$el.outerWidth()) {
+//
+// }
+//
+// function move(player {
+//   player.positon++
+//   player.$el.css("left", player.posiiton * move_AMOUNT)
+// })
+//
+//   }
+//   function checkForWinner(player) {
+//     var player_selector = ".player" + player_number;
+//     if ($(".container").width() <= $(".player2").offset().left + player.$el.outerWidth()) {
+//       stop();
+//       $(player_selector + "Wins").show();
+//     }
+//   }
+//   functon
+//   .off("keyup") <<<<< event
+//
+// function evaluateKeypress(e) {
+//   if(e.which ==== p1.charCode) {
+//     move(p1.number);
+//
+//
+//
+//   }
+// }
+
 //onDocument ready: objects are created with default values
 $('document').ready(function() {
   var playerData = [];
@@ -22,22 +75,23 @@ $('document').ready(function() {
   console.log(playerData);
 
   //now that the basic environment has been set, function definitions
+
   //object Constructors and helper functions to create playerData object
   function addPlayer(playerNumber, imageUrl) {
-    playerData[playerNumber] = new PlayerCreate(playerNumber, imageUrl);
+      playerData[playerNumber] = new PlayerCreate(playerNumber, imageUrl);
   }
 
-  function addGlobalStates(winStates) {
-    globalStates = new GlobalStatesCreate();
-  }
+    function addGlobalStates(winStates) {
+        globalStates = new GlobalStatesCreate();
+    }
 
-  function GlobalStatesCreate() {
-    this.winToggle = 0;
-    this.gameStart = 0;
-    this.playerHiddenCounter = 0;
-    this.COUNTER_WIN_CONDITION = 100;
-    return this;
-  }
+    function GlobalStatesCreate() {
+        this.winToggle = 0;
+        this.gameStart = 0;
+        this.playerHiddenCounter = 0;
+        this.COUNTER_WIN_CONDITION = 100;
+        return this;
+      }
     function PlayerCreate(playerNumber, imageUrl) {
         this.image = imageUrl;
         this.wins = 0;
