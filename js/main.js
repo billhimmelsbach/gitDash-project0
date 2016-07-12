@@ -108,13 +108,13 @@ $('document').ready(function() {
     //listener for add player button that reveals hidden divs, including a counter that differentiates when it's time for player 3 versus 4 to appear
     $('.addPlayersButton').on('click', function(event) {
         event.preventDefault(event);
-        if (globalStates.playerHiddenCounter === 1) {
+        if (globalStates.playerHiddenCounter === 0) {
             $('.addPlayerBox3').show();
             $('.hiddenImageBox3').show();
             $('.player3Container').show();
             $('.player3Wins').show();
             globalStates.playerHiddenCounter++;
-        } else if (globalStates.playerHiddenCounter === 2) {
+        } else if (globalStates.playerHiddenCounter === 1) {
             $('.addPlayerBox4').show();
             $('.player4Container').show();
             $('.hiddenImageBox4').show();
