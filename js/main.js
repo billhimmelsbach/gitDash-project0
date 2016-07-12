@@ -11,7 +11,7 @@ $('document').ready(function() {
   $('.player3Image').attr('src', playerData[3].image);
   addPlayer(4, 'img/runnerGreen.png');
   $('.player4Image').attr('src', playerData[4].image);
-  console.log(playerData[1].playerWinCounter);
+  console.log(playerData[4].playerWinCounter);
   console.log(playerData);
   console.log(globalStates);
   console.log(globalStates.COUNTER_WIN_CONDITION);
@@ -207,37 +207,37 @@ $('document').ready(function() {
     $('body').on('keyup', function(event) {
         if (globalStates.gameStart !== 0) {
             //flavor text generator according to how far in the race they are, run on only two of the players to lower processing overhead
-            if (((width1 === "30%") || (width2 === "30%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
-            }
-            if (((width1 === "40%") || (width2 === "40%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ git add .");
-            }
-            if (((width1 === "50%") || (width2 === "50%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
-            }
-            if (((width1 === "60%") || (width2 === "60%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
-            }
-            if (((width1 === "70%") || (width2 === "70%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
-            }
-            if (((width1 === "80%") || (width2 === "77%"))) {
-                $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
-            }
-            if (((width1 === "84%") || (width2 === "82%"))) {
-                $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
-            }
-            if (((width1 === "88%") || (width2 === "88%") || (width3 === "88%") || (width4 === "88%"))) {
-                return;
-            }
+            // if (((width1 === "30%") || (width2 === "30%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ ONE MINUTE?????????????????");
+            // }
+            // if (((width1 === "40%") || (width2 === "40%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ git add .");
+            // }
+            // if (((width1 === "50%") || (width2 === "50%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ git add EVERYTHING");
+            // }
+            // if (((width1 === "60%") || (width2 === "60%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ git commit -m 'ADDDEDD AALL TEH THINGGS'");
+            // }
+            // if (((width1 === "70%") || (width2 === "70%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ git push oorigin mister");
+            // }
+            // if (((width1 === "80%") || (width2 === "77%"))) {
+            //     $('.windowBar').text("student:gitDash-Project0 student$ git push orgin master");
+            // }
+            // if (((width1 === "84%") || (width2 === "82%"))) {
+            //     $('.windowBar').text("7d2bb6c..c0ede8a  master -> master");
+            // }
+            // if (((width1 === "88%") || (width2 === "88%") || (width3 === "88%") || (width4 === "88%"))) {
+            //     return;
+            // }
             //for if statements that moves players when their button is pressed and checks to see if they have finished, if so, run the postWin function
             if (event.which == 49) {
                 $('.player1Track').css({
                   marginLeft: '+=1%'
                 });
-                playerData.player1.playerWinCounter++;
-            if  (playerData.player1.playerWinCounter===playerData.winStates.counterWinCondition) {
+                playerData[1].playerWinCounter++;
+            if  (playerData[1].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
                 postWin("PLAYER 1", "1");
                 }
             }
@@ -245,8 +245,8 @@ $('document').ready(function() {
                 $('.player2Track').css({
                     marginLeft: '+=1%'
                 });
-                playerData.player2.playerWinCounter++;
-                if  (playerData.player2.playerWinCounter===playerData.winStates.counterWinCondition) {
+                playerData[2].playerWinCounter++;
+                if  (playerData[2].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
                     postWin("PLAYER 2", "2");
                 }
             }
@@ -254,8 +254,8 @@ $('document').ready(function() {
                 $('.player3Track').css({
                     marginLeft: '+=1%'
                 });
-                playerData.player3.playerWinCounter++;
-                if  (playerData.player3.playerWinCounter===playerData.winStates.counterWinCondition) {
+                playerData[3].playerWinCounter++;
+                if  (playerData[3].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
                     postWin("PLAYER 3", "player3");
                 }
             }
@@ -263,8 +263,8 @@ $('document').ready(function() {
                 $('.player4Track').css({
                     marginLeft: '+=1%'
                 });
-                playerData.player4.playerWinCounter++;
-                if  (playerData.player4.playerWinCounter===playerData.winStates.counterWinCondition) {
+                playerData[4].playerWinCounter++;
+                if  (playerData[4].playerWinCounter===globalStates.COUNTER_WIN_CONDITION) {
                     postWin("PLAYER 4", "player4");
                 }
             }
